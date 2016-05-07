@@ -5,6 +5,11 @@ export default class App extends Component {
     super(props);
     this.state = {data: [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
                   11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ]};
+    this.createDiv = this.createDiv.bind(this);
+  }
+
+  createDiv() {
+    return <h1>hello world</h1>
   }
 
   render() {
@@ -24,10 +29,8 @@ export default class App extends Component {
       )
     })
 
-    console.log(this.state);
     return (
       <div>
-        <h1>Hello World</h1>
         <svg>
           {bars}
         </svg>
