@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
 var d3 = require('d3');
-var HTMLtoJSX = require('htmltojsx');
-var converter = new HTMLtoJSX({
-  createClass: true,
-  outputClassName: 'AwesomeComponent'
-});
-
-
-var getStyles = styleObject => {
-  		var styles = {}
-  		for(var key in styleObject) {
-  			if(styleObject[key]) styles[key] = styleObject[key];
-  		}
-  		return styles;
-}
-
+var d3DataToJSX = require('./d3DataToJSX');
+var ReactFauxDOM = require('react-faux-dom');
+var el = ReactFauxDOM.createElement('div');
+console.log(el);
 export default class App extends Component {
 
- 	
-
   render() {
-  	var dataset = [ 5, 10, 15, 20, 25 ];
-	var barChart = d3.select('body').selectAll("BarChart")
+
+  	let dataset = [ 5, 10, 15, 20, 25 ];
+  	let circleData = [{"x": 1.0, "y": 1.1}, {"x": 2.0, "y": 2.5}];
+
+  	const bodySelection = d3.select("body");
+
+    const svgSelection = bodySelection.append("svg")
+            .attr("width", 50)
+            .attr("height", 50);
+
+  	const circles = svgSelection.selectAll("svg")
+			.data(circleData)
+			.enter().append("circle")
+			.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) { return d.y; })
+			.attr("r", 2.5);
+
+	const barChart = d3.select('body')
+			.selectAll("BarChart")
 		    .data(dataset)
 		    .enter()
 		    .append("div")
@@ -30,22 +34,15 @@ export default class App extends Component {
 			    var barHeight = d * 5;  //Scale up by factor of 5
 			    return barHeight + "px";
 				});
-	var data = barChart[0].map(obj => {
-		var output = {};
-		output.tag = obj.localName;
-		output.className = obj.className;
-		output.style = getStyles(obj.style);
-		return output;
-	})        
-  	
-  	
-	console.log(barChart[0][0].style)
-    console.log(data)
+
+	
+
+	console.log(d3DataToJSX(circles));
+	const BarChart = d3DataToJSX(barChart);     
 
     return (
 
-            <div></div>
-
+        <div>{BarChart}</div>
     )
   }
 }
