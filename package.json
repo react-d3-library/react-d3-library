@@ -35,7 +35,13 @@
     "webpack": "^1.13.0"
   },
   "dependencies": {
+    "d3": "^3.5.17",
+    "express": "^4.13.4",
+    "htmltojsx": "^0.2.5",
+    "nodemon": "^1.9.2",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "react-faux-dom": "^2.4.0",
+    "react-tools": "^0.13.3"
   }
 }

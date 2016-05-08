@@ -1,0 +1,35 @@
+body div div{
+  border: 1px solid black;
+  position: relative;
+}
+
+#App {
+  position: relative;
+  width: 833px;
+  height: 544px;
+}
+
+#Container {
+  width: 817px;
+  height: 365px;
+  top: 30px;
+  left: 7px;
+}
+
+#BarChart {
+  width: 768px;
+  height: 263px;
+  top: 51px;
+  left: 25px;
+}
+
+div.bar {
+    display: inline-block;
+    width: 20px;
+    margin-right: 2px;
+    background-color: teal;
+}
+
+svg {
+  padding: 20px;
+}
