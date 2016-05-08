@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 var d3 = require('d3');
 var d3DataToJSX = require('./d3DataToJSX');
-var ReactFauxDOM = require('react-faux-dom');
-var el = ReactFauxDOM.createElement('div');
-console.log(el);
+
 export default class App extends Component {
 
   render() {
 
   	let dataset = [ 5, 10, 15, 20, 25 ];
-  	let circleData = [{"x": 1.0, "y": 1.1}, {"x": 2.0, "y": 2.5}];
+  	const makeCircles = (num) => {
+  		var output = [];
+  		for (var i = 0; i < num; i ++) {
+  			var cords = {};
+  			cords.x = Math.random() * 200;
+  			cords.y = Math.random() * 200;
+  			output.push(cords);
+  		}
+  		return output;
+  	}
+  	let circleData = makeCircles(200);
 
   	const bodySelection = d3.select("body");
 
     const svgSelection = bodySelection.append("svg")
-            .attr("width", 50)
-            .attr("height", 50);
+            .attr("width", 200)
+            .attr("height", 200);
 
   	const circles = svgSelection.selectAll("svg")
 			.data(circleData)
@@ -37,12 +45,14 @@ export default class App extends Component {
 
 	
 
-	console.log(d3DataToJSX(circles));
 	const BarChart = d3DataToJSX(barChart);     
-
+	const Circles = d3DataToJSX(circles);
     return (
 
-        <div>{BarChart}</div>
+        <div>
+        	{Circles}
+        	{BarChart}
+        </div>
     )
   }
 }
