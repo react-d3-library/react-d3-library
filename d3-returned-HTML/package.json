@@ -37,10 +37,16 @@
   "dependencies": {
     "d3": "^3.5.17",
     "express": "^4.13.4",
+    "fs": "0.0.2",
     "htmltojsx": "^0.2.5",
+    "jquery": "^2.2.3",
+    "jsdom": "^9.0.0",
+    "mock-browser": "^0.92.11",
+    "net": "^1.0.2",
     "nodemon": "^1.9.2",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
+    "react-faux-dom": "^2.4.0",
     "react-tools": "^0.13.3"
   }
 }
