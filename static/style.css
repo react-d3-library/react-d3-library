@@ -5,13 +5,13 @@ body div div{
 
 #App {
   position: relative;
-  width: 833px;
-  height: 544px;
+  width: 2000px;
+  height: 2000px;
 }
 
 #Container {
-  width: 817px;
-  height: 365px;
+  width: 2000px;
+  height: 2000px;
   top: 30px;
   left: 7px;
 }
@@ -32,4 +32,5 @@ div.bar {
 
 svg {
   padding: 20px;
+  width: 2000px;
 }

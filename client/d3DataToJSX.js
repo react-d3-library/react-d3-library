@@ -23,7 +23,8 @@ const getAttributes = attributesObject => {
 
 const makeChildNodes = (data) => {
 	return data.map((obj, i) => {
-		return <obj.tag {...obj.attributes} key={i}/>
+		// return <obj.tag {...obj.attributes} />
+		return React.createElement(obj.tag, obj.attributes)
 	})
 }
 
@@ -36,10 +37,11 @@ module.exports = node => {
 			if(!isNaN(key)) rawData.push(node[0][key]);
 		}
 
-		var data = rawData.map(obj => {
+		var data = rawData.map((obj, i) => {
 			var output = {};
 			output.tag = obj.localName;
 			output.attributes = getAttributes(obj.attributes);
+			output.attributes.key = output.tag + '.' + i;
 			return output;
 		})
 		return <svg>{makeChildNodes(data)}</svg>

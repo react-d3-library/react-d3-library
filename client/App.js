@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 var d3 = require('d3');
 var d3DataToJSX = require('./d3DataToJSX');
+var ReactFauxDOM = require('react-faux-dom');
+
 
 export default class App extends Component {
 
   render() {
 
   	let dataset = [ 5, 10, 15, 20, 25 ];
+
   	const makeCircles = (num) => {
   		var output = [];
   		for (var i = 0; i < num; i ++) {
   			var cords = {};
-  			cords.x = Math.random() * 200;
-  			cords.y = Math.random() * 200;
+  			cords.x = Math.random() * 1350;
+  			cords.y = Math.random() * 150;
   			output.push(cords);
   		}
   		return output;
   	}
-  	let circleData = makeCircles(200);
 
-  	const bodySelection = d3.select("body");
+  	let circleData = makeCircles(20000);
+
+
+  	const bodySelection = d3.select(root);
+
 
     const svgSelection = bodySelection.append("svg")
-            .attr("width", 200)
-            .attr("height", 200);
+            .attr("width", 1350)
+            .attr("height", 150);
 
   	const circles = svgSelection.selectAll("svg")
 			.data(circleData)
@@ -32,16 +38,16 @@ export default class App extends Component {
 			.attr("cy", function(d) { return d.y; })
 			.attr("r", 2.5);
 
-	const barChart = d3.select('body')
+	  const barChart = d3.select(root)
 			.selectAll("BarChart")
-		    .data(dataset)
-		    .enter()
-		    .append("div")
-		    .attr("class", "bar")
-		    .style("height", function(d) {
-			    var barHeight = d * 5;  //Scale up by factor of 5
-			    return barHeight + "px";
-				});
+	    .data(dataset)
+	    .enter()
+	    .append("div")
+	    .attr("class", "bar")
+	    .style("height", function(d) {
+		    var barHeight = d * 5;  //Scale up by factor of 5
+		    return barHeight + "px";
+			});
 
 	
 
@@ -51,7 +57,7 @@ export default class App extends Component {
 
         <div>
         	{Circles}
-        	{BarChart}
+          {BarChart}
         </div>
     )
   }
