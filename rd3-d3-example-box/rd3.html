@@ -74,7 +74,7 @@ function render() {
   React.render(<Svg width={width} height={height} data={grid(data)} />, document.body);
 
   d3.select(self.frameElement).style("height", height + "px");
-          console.timeEnd('time');
+  console.timeEnd('time');
 }
 
 render();

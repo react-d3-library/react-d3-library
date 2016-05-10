@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: Helvetica, sans-serif;
+}
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.filter-btn.active {
+  font-weight: bold;
+}
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3-grid.js"></script>
+<script src="http://fb.me/react-0.12.2.min.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+<script type="text/jsx;harmony=true">
+var width = 960,
+    height = 960
+    TAU = Math.PI * 2;
+
+var grid = d3.layout.grid()
+  .size([width, height]);
+
+var color = d3.scale.linear()
+  .interpolate(d3.interpolateHcl)
+  .domain([0, 100])
+  .range(["#F66A96", "#3E6E9C"]);
+
+var data = d3.range(5000).map(function(d) {
+  return {
+    id: d,
+    size: 1 + Math.floor(Math.random() * 5),
+    r: Math.random() * 50,
+    color: Math.floor(Math.random() * 100),
+    f: (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 10000 + 1000)
+  };
+});
+
+var tArray = [39, 80, 123, 166, 210, 256, 304, 353, 413, 461, 508, 555, 607, 672, 718, 762, 809, 855, 900, 947, 992, 1038, 1085, 1135, 1182, 1232, 1295, 1340, 1387, 1435, 1483, 1530, 1579, 1629, 1677, 1723, 1772, 1837, 1885, 1932, 1980, 2027, 2074, 2121, 2168, 2215, 2261, 2307, 2357, 2420, 2468, 2525, 2584, 2642, 2691, 2742, 2795, 2856, 2905, 2967, 3013, 3059, 3107, 3159, 3208, 3256, 3306, 3352, 3402, 3452, 3503, 3569, 3614, 3660, 3707, 3753, 3803, 3852, 3900, 3948, 3995, 4078, 4151, 4223, 4298, 4365, 4410, 4457, 4502, 4548, 4594, 4640, 4688, 4754, 4801, 4856, 4916, 4968, 5021, 5072, 5137, 5183, 5237, 5282, 5328, 5376, 5423, 5468, 5516, 5563, 5613, 5682, 5730, 5784, 5839, 5884, 5931, 5984, 6039, 6086, 6133, 6179, 6227, 6274, 6322, 6383, 6430, 6476, 6525, 6573, 6620, 6667, 6716, 6763, 6812, 6860, 6910, 6977, 7026, 7085, 7131, 7178, 7227, 7273, 7320, 7371, 7427, 7484, 7531, 7592, 7643, 7735, 7795, 7855, 7914, 7972, 8031, 8080, 8129, 8175, 8223, 8274, 8341, 8416, 8466, 8515, 8564, 8616, 8681, 8730, 8778, 8826, 8889, 8960, 9032, 9080, 9126, 9174, 9222, 9286, 9336, 9386, 9443, 9493, 9562, 9612, 9667, 9729, 9777, 9824, 9871, 9921, 9968, 10014, 10062, 10109, 10171, 10219]
+
+var Svg = React.createClass({
+  getInitialState() {
+    return this.state = {t: 0, circles: {}, coords: {}, index: 0, currentIndex: 0, current: [], data: {}, loop: false}
+  },
+
+  update(t) {
+    var xyTranslate,
+    index = this.state.index,
+    loop = this.state.loop,
+    circlesState = this.state.circles,
+    coords = this.state.coords,
+    circles;
+
+    if(!this.state.loop) {
+      index = index + 1;
+      var color = d3.scale.linear()
+        .interpolate(d3.interpolateHcl)
+        .domain([0, 100])
+        .range(["#F66A96", "#3E6E9C"]);
+
+      circles = data.map((d) => {
+          var alpha = TAU / d.f * (tArray[index] % d.f);
+          var xTranslate = Math.floor(d.x + Math.cos(alpha) * d.r);
+          var yTranslate = Math.floor(d.y + Math.sin(alpha) * d.r);
+          xyTranslate = String(xTranslate) + yTranslate;
+          if(index === 195) loop = true;
+          return <circle transform={"translate(" + xTranslate + "," + yTranslate + ")"} fill={color(d.color)} r={d.size} key={d.id} />
+        })
+      circlesState[index] = circles;
+      coords[xyTranslate] = xyTranslate;
+      this.setState({t, circles: circlesState, coords, current: circles, loop, index});
+    } else {
+      var currentIndex = this.state.currentIndex;
+      circles = this.state.circles[currentIndex];
+      if(currentIndex >= index) currentIndex = 0;
+      this.setState({current: circles, currentIndex: currentIndex + 1});
+    }
+    console.log(index);
+  },
+
+  componentDidMount() {
+    d3.timer(this.update);
+  },
+
+  render() {
+    return <svg width={this.props.width} height={this.props.height}>
+      {this.state.current}
+    </svg>;
+  }
+})
+
+React.render(<Svg width={width} height={height} data={grid(data)} />, document.body);
+
+d3.select(self.frameElement).style("height", height + "px");
+
+</script>
+
+
