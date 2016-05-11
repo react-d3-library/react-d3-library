@@ -20178,8 +20178,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var d3 = __webpack_require__(169);
-	var d3DataToJSX = __webpack_require__(170);
-	var flare = __webpack_require__(172);
+	var d3DataToJSX = __webpack_require__(171);
+	var flare = __webpack_require__(170);
 
 	var App = function (_Component) {
 			_inherits(App, _Component);
@@ -20236,55 +20236,49 @@
 									return { children: classes };
 							}
 
-							// d3.select(self.frameElement).style("height", diameter + "px");
-							//  console.log(root)
-							// let dataset = [ 5, 10, 15, 20, 25 ];
+							d3.select(self.frameElement).style("height", diameter + "px");
+							console.log(root);
+							var dataset = [5, 10, 15, 20, 25];
 
-							// const makeCircles = (num) => {
-							// 	var output = [];
-							// 	for (var i = 0; i < num; i ++) {
-							// 		var cords = {};
-							// 		cords.x = Math.random() * 1350;
-							// 		cords.y = Math.random() * 150;
-							// 		output.push(cords);
-							// 	}
-							// 	return output;
-							// }
+							var makeCircles = function makeCircles(num) {
+									var output = [];
+									for (var i = 0; i < num; i++) {
+											var cords = {};
+											cords.x = Math.random() * 1350;
+											cords.y = Math.random() * 150;
+											output.push(cords);
+									}
+									return output;
+							};
 
-							// let circleData = makeCircles(1000);
+							var circleData = makeCircles(1000);
 
-							// const bodySelection = d3.select(root);
+							var bodySelection = d3.select(root);
 
-							//  const svgSelection = bodySelection.append("svg")
-							//          .attr("width", 1350)
-							//          .attr("height", 150);
+							var svgSelection = bodySelection.append("svg").attr("width", 1350).attr("height", 150);
 
-							// const circles = svgSelection.selectAll("svg")
-							// .data(circleData)
-							// .enter().append("circle")
-							// .attr("cx", function(d) { return d.x; })
-							// .attr("cy", function(d) { return d.y; })
-							// .attr("r", 2.5);
+							var circles = svgSelection.selectAll("svg").data(circleData).enter().append("circle").attr("cx", function (d) {
+									return d.x;
+							}).attr("cy", function (d) {
+									return d.y;
+							}).attr("r", 2.5);
 
-							// const barChart = d3.select(root)
-							// .selectAll("BarChart")
-							//   .data(dataset)
-							//   .enter()
-							//   .append("div")
-							//   .attr("class", "bar")
-							//   .style("height", function(d) {
-							//    var barHeight = d * 5;  //Scale up by factor of 5
-							//    return barHeight + "px";
-							// });
+							var barChart = d3.select(root).selectAll("BarChart").data(dataset).enter().append("div").attr("class", "bar").style("height", function (d) {
+									var barHeight = d * 5; //Scale up by factor of 5
+									return barHeight + "px";
+							});
 
-							// const BarChart = d3DataToJSX(barChart);
-							// const Circles = d3DataToJSX(circles);
+							var BarChart = d3DataToJSX(barChart);
+							var Circles = d3DataToJSX(circles);
 							var circleGraph = d3DataToJSX(node);
 							return _react2.default.createElement(
 									'div',
 									null,
-									'// ',
-									circleGraph
+									_react2.default.createElement(
+											'h1',
+											null,
+											'hello'
+									)
 							);
 					}
 			}]);
@@ -29855,125 +29849,6 @@
 
 /***/ },
 /* 170 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var getStyles = __webpack_require__(171);
-
-	var getAttributes = function getAttributes(attributesObject) {
-		var attributes = {};
-		for (var key in attributesObject) {
-			if (!isNaN(key)) {
-				attributes[attributesObject[key].localName] = attributesObject[key].nodeValue;
-			}
-		}
-		return attributes;
-	};
-
-	var makeChildNodes = function makeChildNodes(data) {
-		return data.map(function (obj, i) {
-			return obj.children.length === 0 ? _react2.default.createElement(obj.tag, obj.props, obj.props.textContent) : _react2.default.createElement(obj.tag, obj.props, processData(obj.children).map(function (obj) {
-				return makeChildNodes([obj]);
-			}));
-		});
-	};
-
-	module.exports = function (node) {
-		if (node[0].parentNode.localName === 'svg') {
-
-			var rawData = getRawData(node);
-			return build(rawData);
-		} else {
-
-			var data = node[0].map(function (obj) {
-				var output = {};
-				output.tag = obj.localName;
-				output.className = obj.className;
-				output.style = obj.style;
-
-				return output;
-			});
-
-			return data.map(function (obj, i) {
-				return _react2.default.createElement(obj.tag, { className: obj.className, style: getStyles(obj.style), key: i });
-			});
-		}
-	};
-	var counter = -1;
-	function build(nodes) {
-		counter++;
-		if (!Array.isArray(nodes)) nodes = [nodes];
-		var data = processData(nodes);
-		return _react2.default.createElement(
-			'svg',
-			null,
-			makeChildNodes(data)
-		);
-	}
-
-	function getRawData(node) {
-		var output = [];
-		for (var key in node[0]) {
-			if (!isNaN(key)) output.push(node[0][key]);
-		}
-		return output;
-	}
-
-	function processData(nodes) {
-		counter++;
-		var mappedData = nodes.map(function (obj, i) {
-			var output = {};
-			output.tag = obj.localName;
-			output.props = getAttributes(obj.attributes);
-			output.props.style = getStyles(output.props.style);
-			output.props.key = output.tag + '.' + counter + '.' + i;
-			output.nodeType = obj.nodeType;
-			output.children = Array.prototype.slice.call(obj.children);
-			if (output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
-			return output;
-		});
-		return mappedData;
-	}
-
-/***/ },
-/* 171 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function (styleObject) {
-		var styles = {};
-
-		if (typeof styleObject === 'string') {
-			var isDash = styleObject.indexOf('-');
-			var atColon = styleObject.indexOf(':');
-			var subDash = styleObject.slice(0, isDash);
-
-			var _key = isDash > -1 ? styleObject.slice(0, isDash) + styleObject.slice(isDash + 1, isDash + 2).toUpperCase() + styleObject.slice(isDash + 2, atColon) : styleObject.slice(0, atColon);
-
-			var isNum = styleObject.slice(atColon + 2, styleObject.length - 1);
-			var value = isNaN(isNum) ? isNum : Number(isNum);
-
-			styles[_key] = value;
-		} else {
-			for (var key in styleObject) {
-				if (!isNaN(key)) {
-					styles[styleObject[key]] = styleObject[styleObject[key]];
-				}
-			}
-		}
-		return styles;
-	};
-
-/***/ },
-/* 172 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30074,6 +29949,125 @@
 				}, { "name": "Operator", "size": 2490 }, { "name": "OperatorList", "size": 5248 }, { "name": "OperatorSequence", "size": 4190 }, { "name": "OperatorSwitch", "size": 2581 }, { "name": "SortOperator", "size": 2023 }]
 			}, { "name": "Visualization", "size": 16540 }]
 		}]
+	};
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var getStyles = __webpack_require__(172);
+
+	var getAttributes = function getAttributes(attributesObject) {
+		var attributes = {};
+		for (var key in attributesObject) {
+			if (!isNaN(key)) {
+				attributes[attributesObject[key].localName] = attributesObject[key].nodeValue;
+			}
+		}
+		return attributes;
+	};
+
+	var makeChildNodes = function makeChildNodes(data) {
+		return data.map(function (obj, i) {
+			return obj.children.length === 0 ? _react2.default.createElement(obj.tag, obj.props, obj.props.textContent) : _react2.default.createElement(obj.tag, obj.props, processData(obj.children).map(function (obj) {
+				return makeChildNodes([obj]);
+			}));
+		});
+	};
+
+	module.exports = function (node) {
+		if (node[0].parentNode.localName === 'svg') {
+
+			var rawData = getRawData(node);
+			return build(rawData);
+		} else {
+
+			var data = node[0].map(function (obj) {
+				var output = {};
+				output.tag = obj.localName;
+				output.className = obj.className;
+				output.style = obj.style;
+
+				return output;
+			});
+
+			return data.map(function (obj, i) {
+				return _react2.default.createElement(obj.tag, { className: obj.className, style: getStyles(obj.style), key: i });
+			});
+		}
+	};
+	var counter = -1;
+	function build(nodes) {
+		counter++;
+		if (!Array.isArray(nodes)) nodes = [nodes];
+		var data = processData(nodes);
+		return _react2.default.createElement(
+			'svg',
+			null,
+			makeChildNodes(data)
+		);
+	}
+
+	function getRawData(node) {
+		var output = [];
+		for (var key in node[0]) {
+			if (!isNaN(key)) output.push(node[0][key]);
+		}
+		return output;
+	}
+
+	function processData(nodes) {
+		counter++;
+		var mappedData = nodes.map(function (obj, i) {
+			var output = {};
+			output.tag = obj.localName;
+			output.props = getAttributes(obj.attributes);
+			output.props.style = getStyles(output.props.style);
+			output.props.key = output.tag + '.' + counter + '.' + i;
+			output.nodeType = obj.nodeType;
+			output.children = Array.prototype.slice.call(obj.children);
+			if (output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
+			return output;
+		});
+		return mappedData;
+	}
+
+/***/ },
+/* 172 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function (styleObject) {
+		var styles = {};
+
+		if (typeof styleObject === 'string') {
+			var isDash = styleObject.indexOf('-');
+			var atColon = styleObject.indexOf(':');
+			var subDash = styleObject.slice(0, isDash);
+
+			var _key = isDash > -1 ? styleObject.slice(0, isDash) + styleObject.slice(isDash + 1, isDash + 2).toUpperCase() + styleObject.slice(isDash + 2, atColon) : styleObject.slice(0, atColon);
+
+			var isNum = styleObject.slice(atColon + 2, styleObject.length - 1);
+			var value = isNaN(isNum) ? isNum : Number(isNum);
+
+			styles[_key] = value;
+		} else {
+			for (var key in styleObject) {
+				if (!isNaN(key)) {
+					styles[styleObject[key]] = styleObject[styleObject[key]];
+				}
+			}
+		}
+		return styles;
 	};
 
 /***/ }
