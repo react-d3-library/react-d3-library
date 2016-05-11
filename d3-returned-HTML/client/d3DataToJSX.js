@@ -2,12 +2,23 @@
 import React, { Component } from 'react';
 
 const getStyles = styleObject => {
+		// console.log(typeof JSON.parse(styleObject));
   		var styles = {}
-  		for(var key in styleObject) {
-  			if(!isNaN(key)) {
-  				styles[styleObject[key]] = styleObject[styleObject[key]];
-  			} 
-  		}
+  		if(typeof styleObject === 'string') {
+  			var index1 = styleObject.indexOf(':');
+  			var index2 = styleObject.indexOf(';')
+  			var key = styleObject.slice(0, index1);
+  			if (key === 'text-anchor') key = "textAnchor"
+  			var value = styleObject.slice(index1 + 2, index2);
+  			styles[key] = value;
+  			console.log('stylesObject: ', styles)
+  		} else {
+	  		for(var key in styleObject) {
+	  			if(!isNaN(key)) {
+	  				styles[styleObject[key]] = styleObject[styleObject[key]];
+	  			} 
+	  		}
+	  	}	
   		return styles;
 }
 
@@ -21,30 +32,31 @@ const getAttributes = attributesObject => {
   		return attributes;
 }
 
-const makeChildNodes = (data) => {
+const makeChildNodes = data => {
+
 	return data.map((obj, i) => {
-		// return <obj.tag {...obj.attributes} />
-		return React.createElement(obj.tag, obj.attributes)
+		if (obj.children.length === 0) {
+     		return React.createElement(obj.tag, obj.attributes)
+    	} else {
+    		var children = processData(obj.children);
+    		console.log('children: ', children[2].children);
+			return React.createElement(obj.tag, obj.props, 
+		        React.createElement(children[0].tag, children[0].props), 
+		        React.createElement(children[1].tag, children[1].props), 
+		        React.createElement(children[2].tag, children[2].props, children[2].props.textContent)
+			)
+    	}
 	})
+
 }
+
 
 
 module.exports = node => {
 	if(node[0].parentNode.localName === 'svg') {
 
-		var rawData = [];
-		for(var key in node[0]) {
-			if(!isNaN(key)) rawData.push(node[0][key]);
-		}
-
-		var data = rawData.map((obj, i) => {
-			var output = {};
-			output.tag = obj.localName;
-			output.attributes = getAttributes(obj.attributes);
-			output.attributes.key = output.tag + '.' + i;
-			return output;
-		})
-		return <svg>{makeChildNodes(data)}</svg>
+		var rawData = getRawData(node);
+		return build(rawData);
 
 	} else {
 
@@ -53,6 +65,7 @@ module.exports = node => {
 		  	output.tag = obj.localName;
 		  	output.className = obj.className;
 		  	output.style = obj.style;
+
 		  	return output;
 	    }) 
 
@@ -63,4 +76,37 @@ module.exports = node => {
 	}	
 
 
+}
+var counter = -1;
+function build(nodes) {
+	console.log(nodes[9]);
+	counter ++;
+	if(!Array.isArray(nodes)) nodes = [nodes];
+	var data = processData(nodes);
+	return <svg>{makeChildNodes(data)}</svg>
+}
+
+function getRawData(node) {
+	var output = [];
+	for(var key in node[0]) {
+		if(!isNaN(key)) output.push(node[0][key]);
+	}
+	return output;	
+}
+
+function processData(nodes) {
+	counter++
+	var mappedData = nodes.map((obj, i) => {
+		var output = {};
+		output.tag = obj.localName;
+		output.props = getAttributes(obj.attributes);
+		output.props.style = getStyles(output.props.style);
+		output.props.key = output.tag + '.' + counter + '.' + i;
+		output.nodeType = obj.nodeType;
+		output.children = Array.prototype.slice.call(obj.children);
+		output.props.textContent = obj.nodeValue;
+		if(output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
+		return output;
+	})
+	return mappedData;	
 }
