@@ -13,21 +13,11 @@ const getAttributes = attributesObject => {
 }
 
 const makeChildNodes = data => {
-
 	return data.map((obj, i) => {
-		if (obj.children.length === 0) {
-     		return React.createElement(obj.tag, obj.attributes)
-    	} else {
-    		var children = processData(obj.children);
-    		console.log('children: ', children[2].children);
-			return React.createElement(obj.tag, obj.props, 
-		        React.createElement(children[0].tag, children[0].props), 
-		        React.createElement(children[1].tag, children[1].props), 
-		        React.createElement(children[2].tag, children[2].props, children[2].props.textContent)
-			)
-    	}
-	})
-
+		return obj.children.length === 0
+    ? React.createElement(obj.tag, obj.props, obj.props.textContent)
+    : React.createElement(obj.tag, obj.props, processData(obj.children).map(obj => makeChildNodes([obj])))
+	});
 }
 
 
@@ -47,19 +37,18 @@ module.exports = node => {
 		  	output.style = obj.style;
 
 		  	return output;
-	    }) 
+	    })
 
 	    return data.map((obj, i) => {
 	  		return <obj.tag className={obj.className} style={getStyles(obj.style)} key={i} />
 	    })
 
-	}	
+	}
 
 
 }
 var counter = -1;
 function build(nodes) {
-	console.log(nodes[9]);
 	counter ++;
 	if(!Array.isArray(nodes)) nodes = [nodes];
 	var data = processData(nodes);
@@ -71,7 +60,7 @@ function getRawData(node) {
 	for(var key in node[0]) {
 		if(!isNaN(key)) output.push(node[0][key]);
 	}
-	return output;	
+	return output;
 }
 
 function processData(nodes) {
@@ -84,9 +73,8 @@ function processData(nodes) {
 		output.props.key = output.tag + '.' + counter + '.' + i;
 		output.nodeType = obj.nodeType;
 		output.children = Array.prototype.slice.call(obj.children);
-		output.props.textContent = obj.nodeValue;
 		if(output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
 		return output;
 	})
-	return mappedData;	
+	return mappedData;
 }

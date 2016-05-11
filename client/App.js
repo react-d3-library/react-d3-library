@@ -23,7 +23,7 @@ export default class App extends Component {
 	    .attr("height", diameter)
 	    .attr("class", "bubble");
 
-	
+
 
 	  var node = svg.selectAll(".node")
 	      .data(bubble.nodes(classes(flare))
@@ -44,7 +44,6 @@ export default class App extends Component {
 	      .style("text-anchor", "middle")
 	      .text(function(d) { return d.className.substring(0, d.r / 3); });
 
-	 console.log('node: ', node);
 	// Returns a flattened hierarchy containing all leaf nodes under the flare.
 	function classes(flare) {
 	  var classes = [];
@@ -101,9 +100,9 @@ export default class App extends Component {
 		 //    return barHeight + "px";
 			// });
 
-	
 
-	// const BarChart = d3DataToJSX(barChart);     
+
+	// const BarChart = d3DataToJSX(barChart);
 	// const Circles = d3DataToJSX(circles);
 		const circleGraph = d3DataToJSX(node);
     return (
