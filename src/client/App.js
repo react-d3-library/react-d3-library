@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var d3 = require('d3');
-var d3DataToJSX = require('./../utils/d3DataToJSX');
-var flare = require('./flare');
+var d3DataToJSX = require('./../react-d3/d3DataToJSX');
+var flare = require('./../react-d3/flare');
 
 
 export default class App extends Component {
@@ -57,58 +57,58 @@ export default class App extends Component {
 	  return {children: classes};
 	}
 
-	// d3.select(self.frameElement).style("height", diameter + "px");
-   //  console.log(root)
-  	// let dataset = [ 5, 10, 15, 20, 25 ];
+	d3.select(self.frameElement).style("height", diameter + "px");
+    console.log(root)
+  	let dataset = [ 5, 10, 15, 20, 25 ];
 
-  	// const makeCircles = (num) => {
-  	// 	var output = [];
-  	// 	for (var i = 0; i < num; i ++) {
-  	// 		var cords = {};
-  	// 		cords.x = Math.random() * 1350;
-  	// 		cords.y = Math.random() * 150;
-  	// 		output.push(cords);
-  	// 	}
-  	// 	return output;
-  	// }
+  	const makeCircles = (num) => {
+  		var output = [];
+  		for (var i = 0; i < num; i ++) {
+  			var cords = {};
+  			cords.x = Math.random() * 1350;
+  			cords.y = Math.random() * 150;
+  			output.push(cords);
+  		}
+  		return output;
+  	}
 
-  	// let circleData = makeCircles(1000);
-
-
-  	// const bodySelection = d3.select(root);
+  	let circleData = makeCircles(1000);
 
 
-   //  const svgSelection = bodySelection.append("svg")
-   //          .attr("width", 1350)
-   //          .attr("height", 150);
-
-  	// const circles = svgSelection.selectAll("svg")
-			// .data(circleData)
-			// .enter().append("circle")
-			// .attr("cx", function(d) { return d.x; })
-			// .attr("cy", function(d) { return d.y; })
-			// .attr("r", 2.5);
-
-	  // const barChart = d3.select(root)
-			// .selectAll("BarChart")
-	  //   .data(dataset)
-	  //   .enter()
-	  //   .append("div")
-	  //   .attr("class", "bar")
-	  //   .style("height", function(d) {
-		 //    var barHeight = d * 5;  //Scale up by factor of 5
-		 //    return barHeight + "px";
-			// });
+  	const bodySelection = d3.select(root);
 
 
+    const svgSelection = bodySelection.append("svg")
+            .attr("width", 1350)
+            .attr("height", 150);
 
-	// const BarChart = d3DataToJSX(barChart);
-	// const Circles = d3DataToJSX(circles);
+  	const circles = svgSelection.selectAll("svg")
+			.data(circleData)
+			.enter().append("circle")
+			.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) { return d.y; })
+			.attr("r", 2.5);
+
+	  const barChart = d3.select(root)
+			.selectAll("BarChart")
+	    .data(dataset)
+	    .enter()
+	    .append("div")
+	    .attr("class", "bar")
+	    .style("height", function(d) {
+		    var barHeight = d * 5;  //Scale up by factor of 5
+		    return barHeight + "px";
+			});
+
+
+
+	const BarChart = d3DataToJSX(barChart);
+	const Circles = d3DataToJSX(circles);
 		const circleGraph = d3DataToJSX(node);
     return (
 
         <div>
-        	// {circleGraph}
+          <h1>hello</h1>
         </div>
     )
   }
