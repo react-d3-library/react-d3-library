@@ -4,7 +4,7 @@
   "description": "Accessibility of the data visualization library D3 in React.",
   "main": "server.js",
   "scripts": {
-    "start": "webpack --watch | nodemon server.js",
+    "start": "webpack --watch | nodemon ./src/server/server.js",
     "lint": "eslint src"
   },
   "repository": {

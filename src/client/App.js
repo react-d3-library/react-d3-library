@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 var d3 = require('d3');
-var d3DataToJSX = require('./d3DataToJSX');
+var d3DataToJSX = require('./../utils/d3DataToJSX');
 var flare = require('./flare');
 
 

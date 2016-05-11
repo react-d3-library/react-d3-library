@@ -13,7 +13,7 @@ module.exports = {
   })
   ],
   output: {
-    filename: './static/bundle.js'
+    filename: './static/js/bundle.js'
   },
   module: {
     loaders: [
