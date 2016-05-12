@@ -35,3 +35,15 @@ svg {
   width: 2000px;
   height: 2000px;
 }
+
+.navbar {
+  margin: 0 auto;
+}
+
+.nav-ul {
+  width: 760px;
+  height: 130px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
