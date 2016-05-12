@@ -2,15 +2,23 @@
 import React, { Component } from 'react';
 const getStyles = require('./getStyles');
 
+
 const getAttributes = attributesObject => {
   		var attributes = {}
   		for(var key in attributesObject) {
   			if(!isNaN(key)) {
-  				attributes[attributesObject[key].localName] = attributesObject[key].nodeValue;
+  				if(attributesObject[key].localName === 'class') {
+  					attributes['className'] = attributesObject[key].nodeValue;
+  				} else if (attributesObject[key].localName.indexOf('-') > -1) {
+  					attributes['textAnchor'] = attributesObject[key].nodeValue;
+  				}
+  				else attributes[attributesObject[key].localName] = attributesObject[key].nodeValue;
   			}
   		}
+  		// console.log('attt: ', attributes);
   		return attributes;
 }
+
 
 const makeChildNodes = data => {
 	return data.map((obj, i) => {
@@ -23,31 +31,12 @@ const makeChildNodes = data => {
 
 
 module.exports = node => {
-	if(node[0].parentNode.localName === 'svg') {
-
-		var rawData = getRawData(node);
-		return build(rawData);
-
-	} else {
-
-	    var data = node[0].map(obj => {
-		  	var output = {};
-		  	output.tag = obj.localName;
-		  	output.className = obj.className;
-		  	output.style = obj.style;
-
-		  	return output;
-	    })
-
-	    return data.map((obj, i) => {
-	  		return <obj.tag className={obj.className} style={getStyles(obj.style)} key={i} />
-	    })
-
-	}
-
-
+	var rawData = getRawData(node);
+	return build(rawData);
 }
+
 var counter = -1;
+
 function build(nodes) {
 	counter ++;
 	if(!Array.isArray(nodes)) nodes = [nodes];
