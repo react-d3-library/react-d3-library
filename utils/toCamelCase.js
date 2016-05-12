@@ -1,5 +1,5 @@
 module.exports = spinalCaseValue => {
-	let strArray = string.split('');
+	let strArray = spinalCaseValue.split('');
 	let shouldCapitalize = false;
 	return strArray.reduce((acc, cur) => {
 		if(cur === '-') {
