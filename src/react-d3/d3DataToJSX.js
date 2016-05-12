@@ -25,25 +25,29 @@ const makeChildNodes = data => {
 
 
 module.exports = node => {
-	if(node[0].parentNode.localName === 'svg') {
+
+	//if(node[0].parentNode.localName === 'svg') {
+
 		var rawData = getRawData(node);
 		return build(rawData);
-	} else {
 
-	    var data = node[0].map(obj => {
-		  	var output = {};
-		  	output.tag = obj.localName;
-		  	output.className = obj.className;
-		  	output.style = obj.style;
+	// } else {
 
-		  	return output;
-	    })
 
-	    return data.map((obj, i) => {
-	  		return <obj.tag className={obj.className} style={getStyles(obj.style)} key={i} />
-	    })
+	//     var data = node[0].map(obj => {
+	// 	  	var output = {};
+	// 	  	output.tag = obj.localName;
+	// 	  	output.className = obj.className;
+	// 	  	output.style = obj.style;
 
-	}
+	// 	  	return output;
+	//     })
+
+	//     return data.map((obj, i) => {
+	//   		return <obj.tag className={obj.className} style={getStyles(obj.style)} key={i} />
+	//     })
+
+	// }
 
 
 }

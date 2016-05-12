@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var d3 = require('d3');
-var d3DataToJSX = require('./../utils/d3DataToJSX');
-var flare = require('./flare');
+var d3DataToJSX = require('./../react-d3/d3DataToJSX');
+var flare = require('./../react-d3/flare');
 
 
 
@@ -9,54 +9,55 @@ export default class App extends Component {
 
   render() {
 
-	var diameter = 960,
-	    format = d3.format(",d"),
-	    color = d3.scale.category20c();
+    var width = 960,
+        height = 500;
 
-	var bubble = d3.layout.pack()
-	    .sort(null)
-	    .size([diameter, diameter])
-	    .padding(1.5);
+    var svg = d3.select('body').append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+    var gradient = svg.append("defs").append("linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "0%")
+        .attr("y1", "20%")
+        .attr("x2", "20%")
+        .attr("y2", "100%");
 
-	var svg = d3.select(root).append("svg")
-	    .attr("width", diameter)
-	    .attr("height", diameter)
-	    .attr("class", "bubble");
+    gradient.append("stop")
+        .attr("offset", "20%")
+        .attr("stop-color", "#ccf");
 
+    gradient.append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "#1C425C");
 
+    gradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#19162B");
 
-	  var node = svg.selectAll(".node")
-	      .data(bubble.nodes(classes(flare))
-	      .filter(function(d) { return !d.children; }))
-	    .enter().append("g")
-	      .attr("class", "node")
-	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    // could use transparent gradient overlay to vary raindrop color
+    svg.selectAll("path")
+        .data(d3.range(358))
+      .enter().append("path")
+        .attr("fill", "url(#gradient)")
+        .attr("d", function() { return raindrop(10 + Math.random() * 200); })
+        .attr("transform", function(d) {
+          return "rotate(" + d + ")"
+              + "translate(" + (height / 4 + Math.random() * height / 6) + ",0)"
+              + "rotate(90)";
+        });
 
-	  node.append("title")
-	      .text(function(d) { return d.className + ": " + format(d.value); });
-
-	  node.append("circle")
-	      .attr("r", function(d) { return d.r; })
-	      .style("fill", function(d) { return color(d.packageName); });
-
-	  node.append("text")
-	      .attr("dy", ".3em")
-	      .style("text-anchor", "middle")
-	      .text(function(d) { return d.className.substring(0, d.r / 3); });
-
-	// Returns a flattened hierarchy containing all leaf nodes under the flare.
-	function classes(flare) {
-	  var classes = [];
-
-	  function recurse(name, node) {
-	    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-	    else classes.push({packageName: name, className: node.name, value: node.size});
-	  }
-
-	  recurse(null, flare);
-	  return {children: classes};
-	}
+    // size is linearly proportional to square pixels (not exact, yet)
+    function raindrop(size) {
+      var r = Math.sqrt(size / Math.PI);
+      return "M" + r + ",0"
+          + "A" + r + "," + r + " 0 1,1 " + -r + ",0"
+          + "C" + -r + "," + -r + " 0," + -r + " 0," + -3*r
+          + "C0," + -r + " " + r + "," + -r + " " + r + ",0"
+          + "Z";
+    }
 
 	// d3.select(self.frameElement).style("height", diameter + "px");
    //  console.log(root)
@@ -101,15 +102,16 @@ export default class App extends Component {
 		 //    return barHeight + "px";
 			// });
 
-
+	
 
 	// const BarChart = d3DataToJSX(barChart);
-	// const Circles = d3DataToJSX(circles);
-		const circleGraph = d3DataToJSX(node);
+	const Raindrops = d3DataToJSX(svg);
+
     return (
 
         <div>
-        	// {circleGraph}
+        	<button onCLick = {} >click me</button>
+        	{Raindrops}
         </div>
     )
   }

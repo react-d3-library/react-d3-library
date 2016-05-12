@@ -40,7 +40,6 @@
     "nodemon": "^1.9.2",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "react-faux-dom": "^2.4.0",
-    "react-tools": "^0.13.3"
+    "react-router": "^2.4.0"
   }
 }
