@@ -18,7 +18,7 @@ var svg = d3.select(root).append("svg")
 var node = svg.selectAll(".node")
     .data(bubble.nodes(classes(flare))
     .filter(function(d) { return !d.children; }))
-  .enter().append("g")
+    .enter().append("g")
     .attr("class", "node")
     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 

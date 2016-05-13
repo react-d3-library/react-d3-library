@@ -66,4 +66,53 @@ svg {
   stroke-width: 1.5px;
 }
 
+/* These are style for sizedDonutMultiples */
+
+/*svg {
+  padding: 10px 0 0 10p;
+}*/
+
+.legend {
+  vertical-align: top;
+}
+
+.label {
+  text-anchor: middle;
+}
+
+.label-name {
+  font-weight: bold;
+}
+
+/* These are style for mergeSort */
+
+.lineMS {
+  fill: none;
+  stroke: #000;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line-haloMS {
+  stroke-linecap: butt;
+  stroke-width: 8px;
+}
+
+/* These are style for treeMap */
+
+.nodeTM {
+  box-sizing: border-box;
+  line-height: 1em;
+  overflow: hidden;
+  padding: 4px;
+  position: absolute;
+  white-space: pre;
+}
+
+.node-valueTM {
+  color: rgba(0,0,0,0.8);
+  font-size: 9px;
+  margin-top: 1px;
+}
 
