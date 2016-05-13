@@ -49,16 +49,16 @@ const extractData = nodes => {
 		// Create an array for all the child nodes
 		output.children = Array.prototype.slice.call(obj.children);
 
-		//Build the props object to be used in react createElement and convert into react friendly syntax
+		// Build the props object to be used in react createElement and convert into react friendly syntax
 		output.props = getAttributes(obj.attributes);
+		
+		// If styles exits convert the CSSStyleDeclaration into react friendly syntax-
+		if(output.props.style) output.props.style = getStyles(output.props.style);
 
-		//Retrieve the styles form the CSSStyleDeclaration object and convert into react friendly syntax
-		output.props.style = getStyles(output.props.style);
-
-		//Key represents (type of DOM element) + (layer deep in the tree) + (index of each sibling element)
+		// Key represents (type of DOM element) + (layer deep in the tree) + (index of each sibling element)
 		output.props.key = output.tag + '.' + counter + '.' + i;
 
-		//Special case for text tags
+		// Special case for text tags
 		if(output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
 
 		return output;
@@ -85,7 +85,7 @@ const makeChildNodes = reactData => {
 }
 //Build raw data and then build the react DOM
 module.exports = nodes => {
-		console.log(nodes)
+
 		var rawData = getRawData(nodes);
 
 		return build(rawData);

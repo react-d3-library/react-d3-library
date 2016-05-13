@@ -1,19 +1,23 @@
 module.exports =  styleObject => {
-	const styles = {};
+
+	var styles = {};
 
 	if(typeof styleObject === 'string') {
-    const isDash = styleObject.indexOf('-');
-    const atColon = styleObject.indexOf(':');
-    const subDash = styleObject.slice(0, isDash);
+		let styleArray = styleObject.split(';');
+		styleArray.pop();
+		styleArray.forEach(style => {
+			let isDash = style.indexOf('-');
+		    let indexOfColon= style.indexOf(':');
 
-    const key = isDash > -1 
-      ? (styleObject.slice(0, isDash) + styleObject.slice(isDash + 1, isDash + 2).toUpperCase() + styleObject.slice(isDash + 2, atColon))
-      : styleObject.slice(0, atColon);
+		    let key = isDash > -1 
+		      ? (style.slice(0, isDash) + style.slice(isDash + 1, isDash + 2).toUpperCase() + style.slice(isDash + 2, indexOfColon))
+		      : style.slice(0, indexOfColon);
 
-    const isNum = styleObject.slice(atColon + 2, styleObject.length - 1);
-    const value = isNaN(isNum) ? isNum : Number(isNum);
-
-		styles[key] = value;
+		    let isNum = style.slice(indexOfColon + 1);
+		    let value = isNaN(isNum) ? isNum : Number(isNum);
+			styles[key.trim()] = value.trim();
+		})		
+    
 
 	} else {
 		for(var key in styleObject) {
@@ -21,6 +25,6 @@ module.exports =  styleObject => {
 				styles[styleObject[key]] = styleObject[styleObject[key]];
 			} 
 		}
-	}	
+	}
 	return styles;
 }
