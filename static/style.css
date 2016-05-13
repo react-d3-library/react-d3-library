@@ -7,8 +7,14 @@ svg {
   text-align: center;
 }
 
+body {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
 .navbar {
   margin: 0 auto;
+  font-size: 30px;
 }
 
 .nav-ul {
