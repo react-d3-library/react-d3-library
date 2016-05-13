@@ -8,7 +8,7 @@ module.exports = React.createClass({
         <nav className="navbar">
         	<li><Link to="/">Home</Link></li>
           <li><Link to="/bubbleChart">Bubble Chart</Link></li>
-          <li><Link to="/circleEventHandler">Bubble Chart</Link></li>
+          <li><Link to="/circleEventHandler">Circle Event Chart</Link></li>
         </nav>
       </div>
     )

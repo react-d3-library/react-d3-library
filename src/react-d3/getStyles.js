@@ -6,7 +6,7 @@ module.exports =  styleObject => {
     const atColon = styleObject.indexOf(':');
     const subDash = styleObject.slice(0, isDash);
 
-    const key = isDash > -1 
+    const key = isDash > -1
       ? (styleObject.slice(0, isDash) + styleObject.slice(isDash + 1, isDash + 2).toUpperCase() + styleObject.slice(isDash + 2, atColon))
       : styleObject.slice(0, atColon);
 
@@ -19,8 +19,8 @@ module.exports =  styleObject => {
 		for(var key in styleObject) {
 			if(!isNaN(key)) {
 				styles[styleObject[key]] = styleObject[styleObject[key]];
-			} 
+			}
 		}
-	}	
+	}
 	return styles;
 }

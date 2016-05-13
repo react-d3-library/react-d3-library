@@ -1,53 +1,43 @@
 import React, { Component } from 'react';
-var d3 = require('d3');
-var d3DataToJSX = require('./../react-d3/d3DataToJSX');
+import d3 from 'd3';
+var d3DataToJSX = require('./../../react-d3/d3DataToJSX');
+var D3Component = require('./d3Component');
 
-export default class App extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     t: 0
-  //   }
 
-  //   this.update = this.update.bind(this);
-  // }
+module.exports = React.createClass({
 
-  // componentDidMount() {
-  //   d3.timer(this.update);
-  // }
+  getInitialState: function() {
+    return {d3: ''}
+  },
 
-  // update(t) {
-  //   this.setState({t});
-  // }
+  componentDidMount: function() {
+     var svg = d3.select("body").append("svg")
+    .attr({
+      width: 500,
+      height: 500
+    })
+  .append("g")
+    .attr("transform", "translate(0,0)");
 
-  render() {
-          // {d3DataToJSX(node)}
-    var svg = d3.select("body").append("svg")
-      .attr({
-        width: 500,
-        height: 500
-      })
-    .append("g")
-      .attr("transform", "translate(0,0)");
+  var node = svg.selectAll(".node")
+    .data([10]);
+  node.enter().append("circle")
+    .attr("class", "node")
+    .attr("transform", function(d) { return "translate(200,200)"; })
+    .attr("r", function(d) { return 50; })
+    .attr("fill", function(d) { return "blue"; })
+    .on("click", function(){ d3.select(this).style("fill", "blue");})
+    .on("mouseover", function(){d3.select(this).style("fill", "green");})
+    this.setState({d3: node});
+    console.log(node);
+  },
 
-    var node = svg.selectAll(".node")
-      .data([50]);
-    node.enter().append("circle")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(200,200)"; })
-      .attr("r", function(d) { return 50; })
-      .attr("fill", function(d) { return "blue"; })
-      .on("click", function(){d3.select(this).style("fill", "green");})
-      .on("hover", function(){d3.select(this).style("fill", "green");})
+
+  render: function() {
     return (
-        <div>
-          {d3DataToJSX(node)}
-        </div>
+      <div>
+        <D3Component data={this.state.d3} />
+      </div>
     )
   }
-}
-
-
-
-
-
+});
