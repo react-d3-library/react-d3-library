@@ -26,8 +26,7 @@ module.exports = React.createClass({
     .attr("transform", function(d) { return "translate(200,200)"; })
     .attr("r", function(d) { return 50; })
     .attr("fill", function(d) { return "blue"; })
-    .on("click", function(){ d3.select(this).style("fill", "blue");})
-    .on("mouseover", function(){d3.select(this).style("fill", "green");})
+    .on("click", function(){ e.currentTarget.style.fill = 'red'})
     this.setState({d3: node});
     console.log(node);
   },
