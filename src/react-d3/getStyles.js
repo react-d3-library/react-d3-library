@@ -9,21 +9,21 @@ module.exports =  styleObject => {
 			let isDash = style.indexOf('-');
 		    let indexOfColon= style.indexOf(':');
 
-		    let key = isDash > -1 
+		    let key = isDash > -1
 		      ? (style.slice(0, isDash) + style.slice(isDash + 1, isDash + 2).toUpperCase() + style.slice(isDash + 2, indexOfColon))
 		      : style.slice(0, indexOfColon);
 
 		    let isNum = style.slice(indexOfColon + 1);
 		    let value = isNaN(isNum) ? isNum : Number(isNum);
 			styles[key.trim()] = value.trim();
-		})		
-    
+		})
+
 
 	} else {
 		for(var key in styleObject) {
 			if(!isNaN(key)) {
 				styles[styleObject[key]] = styleObject[styleObject[key]];
-			} 
+			}
 		}
 	}
 	return styles;

@@ -1,39 +1,10 @@
-body div div{
-  border: 1px solid black;
-  position: relative;
-}
-
-#App {
-  position: relative;
-  width: 2000px;
-  height: 2000px;
-}
-
-#Container {
-  width: 2000px;
-  height: 2000px;
-  top: 30px;
-  left: 7px;
-}
-
-#BarChart {
-  width: 768px;
-  height: 263px;
-  top: 51px;
-  left: 25px;
-}
-
-div.bar {
-    display: inline-block;
-    width: 20px;
-    margin-right: 2px;
-    background-color: teal;
-}
-
 svg {
   padding: 20px;
-  width: 2000px;
-  height: 2000px;
+  width: 1000px;
+  height: 1000px;
+  position: relative;
+  float: left;
+  text-align: center;
 }
 
 .navbar {
