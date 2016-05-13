@@ -38,25 +38,27 @@ const extractData = nodes => {
 
   //increment the counter so the key is different for each nested layer.
   counter++
+
   let mappedData = nodes.map((obj, i) => {
+
     let output = {};
 
     //HTML tag name ...div, g, circle, etc...
     output.tag = obj.localName;
-    // console.log(obj.__data__);
+
     // Create an array for all the child nodes
     output.children = Array.prototype.slice.call(obj.children);
 
-    //Build the props object to be used in react createElement and convert into react friendly syntax
+    // Build the props object to be used in react createElement and convert into react friendly syntax
     output.props = getAttributes(obj.attributes, obj);
 
-    //Retrieve the styles form the CSSStyleDeclaration object and convert into react friendly syntax
-    output.props.style = getStyles(output.props.style);
+    // If styles exits convert the CSSStyleDeclaration into react friendly syntax-
+    if(output.props.style) output.props.style = getStyles(output.props.style);
 
-    //Key represents (type of DOM element) + (layer deep in the tree) + (index of each sibling element)
+    // Key represents (type of DOM element) + (layer deep in the tree) + (index of each sibling element)
     output.props.key = output.tag + '.' + counter + '.' + i;
 
-    //Special case for text tags
+    // Special case for text tags
     if(output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
 
     return output;
@@ -71,7 +73,7 @@ const extractData = nodes => {
 const makeChildNodes = reactData => {
 
   return reactData.map((obj, i) => {
-    // console.log(obj.tag, obj.props)
+
     return obj.children.length === 0
 
         ? React.createElement(obj.tag, obj.props, obj.props.textContent)
@@ -82,9 +84,9 @@ const makeChildNodes = reactData => {
 
 }
 //Build raw data and then build the react DOM
-module.exports = node => {
+module.exports = nodes => {
 
-    var rawData = getRawData(node);
+    var rawData = getRawData(nodes);
 
     return build(rawData);
 }
