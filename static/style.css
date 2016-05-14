@@ -1,10 +1,20 @@
-svg {
+body {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+/*svg {
   padding: 20px;
   width: 1000px;
   height: 1000px;
   position: relative;
   float: left;
   text-align: center;
+}*/
+
+body {
+  font-size: 10px;
+  font-family: sans-serif;
 }
 
 body {
@@ -13,6 +23,7 @@ body {
 
 .navbar {
   margin: 0 auto;
+  font-size: 30px;
 }
 
 .nav-ul {
@@ -23,7 +34,7 @@ body {
   text-align: center;
 }
 
-/* These are style for radialTree */
+/* These are styles for radialTree */
 
 .nodeRT circle {
   fill: #fff;
@@ -41,7 +52,7 @@ body {
   stroke-width: 1.5px;
 }
 
-/* These are style for sizedDonutMultiples */
+/* These are styles for sizedDonutMultiples */
 
 /*svg {
   padding: 10px 0 0 10p;
@@ -59,7 +70,7 @@ body {
   font-weight: bold;
 }
 
-/* These are style for mergeSort */
+/* These are styles for mergeSort */
 
 .lineMS {
   fill: none;
@@ -74,7 +85,7 @@ body {
   stroke-width: 8px;
 }
 
-/* These are style for treeMap */
+/* These are styles for treeMap */
 
 .nodeTM {
   box-sizing: border-box;
@@ -90,4 +101,64 @@ body {
   font-size: 9px;
   margin-top: 1px;
 }
+
+/* These are styles for congressionalDistrics */
+
+/*path {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}*/
+
+.districts {
+  fill: #bbb;
+}
+
+.districts :hover {
+  fill: orange;
+}
+
+.district-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+.state-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+/* These are styles for calendarView */
+
+body {
+  font: 10px sans-serif;
+  shape-rendering: crispEdges;
+
+}
+
+.day {
+  fill: #fff;
+  stroke: #ccc;
+}
+
+.month {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.RdYlGn .q0-11{fill:rgb(165,0,38)}
+.RdYlGn .q1-11{fill:rgb(215,48,39)}
+.RdYlGn .q2-11{fill:rgb(244,109,67)}
+.RdYlGn .q3-11{fill:rgb(253,174,97)}
+.RdYlGn .q4-11{fill:rgb(254,224,139)}
+.RdYlGn .q5-11{fill:rgb(255,255,191)}
+.RdYlGn .q6-11{fill:rgb(217,239,139)}
+.RdYlGn .q7-11{fill:rgb(166,217,106)}
+.RdYlGn .q8-11{fill:rgb(102,189,99)}
+.RdYlGn .q9-11{fill:rgb(26,152,80)}
+.RdYlGn .q10-11{fill:rgb(0,104,55)}
 

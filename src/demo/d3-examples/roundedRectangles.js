@@ -32,7 +32,9 @@ svg.on('mousemove', function() {
   for (var key in nodes) {
     if (!isNaN(key)) {
     // console.log(nodes[key].children[0]);
-      nodes[key].children[0].setAttribute('transfrom', 'translate(' + e.pageX + ', ' + e.pageY + ')rotate(35)');
+    //  nodes[key].children[0].setAttribute('transfrom', 'translate(' + e.pageX + ', ' + e.pageY + ')rotate(35)');
+      nodes[key].children[0].setAttribute('transfrom', 'translate(' + this.props.mouse + ')rotate(35)');
+
       console.log(nodes[0].children[0].transform);
       console.log(e.pageX, e.pageY);
       console.log(this.onMouseMove);
