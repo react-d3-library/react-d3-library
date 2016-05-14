@@ -10,10 +10,10 @@ var counter = -1;
 const getRawData = node => {
 
   var output = [];
+  console.log(node.childNodes);
+  for(var key in node.childNodes) {
 
-  for(var key in node[0]) {
-
-    if(!isNaN(key)) output.push(node[0][key]);
+    if(!isNaN(key) && node.childNodes[key]) output.push(node.childNodes[key]);
 
   }
 
@@ -29,7 +29,7 @@ const build = nodes => {
   // Extract all the relevant data for React createElement from each DOM node.
   var reactData = extractData(nodes);
 
-  return <svg>{makeChildNodes(reactData)}</svg>
+  return makeChildNodes(reactData)
 }
 
 // Maps over all the nodes and extracts all the data relevant to React
@@ -73,7 +73,7 @@ const extractData = nodes => {
 const makeChildNodes = reactData => {
 
   return reactData.map((obj, i) => {
-
+    
     return obj.children.length === 0
 
         ? React.createElement(obj.tag, obj.props, obj.props.textContent)
@@ -85,7 +85,8 @@ const makeChildNodes = reactData => {
 }
 //Build raw data and then build the react DOM
 module.exports = nodes => {
-
+   
+    console.log('passed in data', nodes);
     var rawData = getRawData(nodes);
 
     return build(rawData);
