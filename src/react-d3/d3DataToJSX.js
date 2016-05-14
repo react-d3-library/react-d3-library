@@ -73,7 +73,7 @@ const extractData = nodes => {
 const makeChildNodes = reactData => {
 
   return reactData.map((obj, i) => {
-    
+
     return obj.children.length === 0
 
         ? React.createElement(obj.tag, obj.props, obj.props.textContent)
@@ -85,7 +85,7 @@ const makeChildNodes = reactData => {
 }
 //Build raw data and then build the react DOM
 module.exports = nodes => {
-   
+
     console.log('passed in data', nodes);
     var rawData = getRawData(nodes);
 
