@@ -7,6 +7,10 @@ svg {
   text-align: center;
 }
 
+body {
+  font-size: 10px;
+}
+
 .navbar {
   margin: 0 auto;
 }

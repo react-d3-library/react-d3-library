@@ -76,9 +76,9 @@ const makeChildNodes = reactData => {
 
     return obj.children.length === 0
 
-        ? React.createElement(obj.tag, obj.props, obj.props.textContent)
+      ? React.createElement(obj.tag, obj.props, obj.props.textContent)
 
-        : React.createElement(obj.tag, obj.props, extractData(obj.children).map(obj => makeChildNodes([obj])))
+      : React.createElement(obj.tag, obj.props, extractData(obj.children).map(obj => makeChildNodes([obj])))
 
   });
 
@@ -87,6 +87,6 @@ const makeChildNodes = reactData => {
 module.exports = nodes => {
 
     var rawData = getRawData(nodes);
-
+    
     return build(rawData);
 }

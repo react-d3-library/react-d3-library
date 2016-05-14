@@ -7,6 +7,7 @@ var RadialTree = require('./components/convertRadialTree');
 var BestCanidate = require('./components/convertBestCanidate');
 var ColorMesh = require('./components/convertColorMesh');
 var MergeSort = require('./components/convertMergeSort');
+var RoundedRectangles = require('./components/convertRoundedRectangles');
 
 module.exports = (
   <Router history={browserHistory} >
@@ -17,6 +18,7 @@ module.exports = (
       <Route path='colorMesh' component={ColorMesh} />
       <Route path='bestCanidate' component={BestCanidate} />
       <Route path='mergeSort' component={MergeSort} />
+      <Route path='roundedRectangles' component={RoundedRectangles} />
     </Route>
   </Router>
 )
