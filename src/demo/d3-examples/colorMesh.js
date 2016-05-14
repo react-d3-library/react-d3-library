@@ -1,4 +1,6 @@
 var d3 = require('d3');
+var div = document.createElement('div');
+
 
 var width = 960,
     height = 500;
@@ -12,7 +14,7 @@ while (sample = sampler()) samples.push(sample);
 var voronoi = d3.geom.voronoi()
     .clipExtent([[-1, -1], [width + 1, height + 1]]);
 
-var svg = d3.select(root).append("svg")
+var svg = d3.select(div).append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -100,4 +102,4 @@ function poissonDiscSampler(width, height, radius) {
   }
 }
 
-module.exports = svg;
+module.exports = div
