@@ -48,4 +48,4 @@ function classes(flare) {
 }
 
 
-module.exports = node;
+module.exports = svg;

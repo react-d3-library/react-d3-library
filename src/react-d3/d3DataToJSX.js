@@ -28,17 +28,15 @@ const build = nodes => {
 
   // Extract all the relevant data for React createElement from each DOM node.
   var reactData = extractData(nodes);
-
-  return <svg>{makeChildNodes(reactData)}</svg>
+  console.log(reactData);
+  return <svg>{makeChildNodes(reactData)}</svg>;
 }
 
 // Maps over all the nodes and extracts all the data relevant to React
 // Does not map over child elements of the nodes, this is done in recurssive calls from makeChildNodes
 const extractData = nodes => {
-
   //increment the counter so the key is different for each nested layer.
   counter++
-
   let mappedData = nodes.map((obj, i) => {
 
     let output = {};
@@ -51,7 +49,6 @@ const extractData = nodes => {
 
     // Build the props object to be used in react createElement and convert into react friendly syntax
     output.props = getAttributes(obj.attributes, obj);
-
     // If styles exits convert the CSSStyleDeclaration into react friendly syntax-
     if(output.props.style) output.props.style = getStyles(output.props.style);
 
@@ -86,7 +83,7 @@ const makeChildNodes = reactData => {
 //Build raw data and then build the react DOM
 module.exports = nodes => {
 
-    var rawData = getRawData(nodes);
+  var rawData = getRawData(nodes);
 
-    return build(rawData);
+  return build(rawData);
 }
