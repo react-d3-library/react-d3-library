@@ -12,6 +12,9 @@ var CircleTransitions = require('./components/circleTransitions');
 var CongressionalDistricts = require('./components/convertCongressionalDistricts');
 var CalendarView = require('./components/convertCalendarView');
 var BarChartComponent = require('./../charts/reactCharts/BarChart');
+var PieChart = require('./components/convertPieChart');
+var ScatterPlot = require('./components/convertScatterPlot');
+var AreaChart = require('./components/convertAreaChart');
 
 module.exports = (
   <Router history={browserHistory} >
@@ -27,6 +30,9 @@ module.exports = (
       <Route path='congressionalDistricts' component={CongressionalDistricts} />
       <Route path='calendarView' component={CalendarView} />
       <Route path='barChartComponent' component={BarChartComponent} />
+      <Route path='pieChart' component={PieChart} />
+      <Route path='areaChart' component={AreaChart} />
     </Route>
   </Router>
 )
+

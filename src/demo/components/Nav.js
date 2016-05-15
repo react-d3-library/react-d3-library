@@ -18,8 +18,12 @@ module.exports = React.createClass({
           <li><Link to="/congressionalDistricts">Congressional Districts</Link></li>
           <li><Link to="/calendarView">Calendar View</Link></li>
           <li><Link to="/barChartComponent">BarChart Component</Link></li>
+          <li><Link to="/pieChart">Pie Chart</Link></li>
+          <li><Link to="/scatterPlot">Scatter Plot</Link></li>
+          <li><Link to="/areaChart">Area Chart</Link></li>
         </nav>
       </div>
     )
   }
 });
+
