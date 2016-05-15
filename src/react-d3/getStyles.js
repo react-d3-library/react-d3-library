@@ -14,8 +14,8 @@ module.exports =  styleObject => {
 		      : style.slice(0, indexOfColon);
 
 		    let isNum = style.slice(indexOfColon + 1);
-		    let value = isNaN(isNum) ? isNum : Number(isNum);
-			styles[key.trim()] = value.trim();
+		    let value = isNaN(isNum) ? isNum.trim() : Number(isNum);
+			styles[key.trim()] = value;
 		})
 
 

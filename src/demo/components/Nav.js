@@ -17,6 +17,7 @@ module.exports = React.createClass({
           <li><Link to="/circleTransitions">Circle Transition</Link></li>
           <li><Link to="/congressionalDistricts">Congressional Districts</Link></li>
           <li><Link to="/calendarView">Calendar View</Link></li>
+          <li><Link to="/barChartComponent">BarChart Component</Link></li>
         </nav>
       </div>
     )
