@@ -13,8 +13,6 @@ var color = d3.scale.quantize()
     .domain([-.05, .05])
     .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
-var div = document.createElement('div');
-
 var svg = d3.select(div).selectAll("svg")
     .data(d3.range(1990, 2011))
   .enter().append("svg")
@@ -50,7 +48,7 @@ svg.selectAll(".month")
 
 d3.csv("dji.csv", function(error, csv) {
   if (error) throw error;
-
+  console.log(csv)
   var data = d3.nest()
     .key(function(d) { return d.Date; })
     .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
