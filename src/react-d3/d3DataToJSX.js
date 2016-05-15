@@ -86,7 +86,7 @@ const makeChildNodes = reactData => {
 //Build raw data and then build the react DOM
 module.exports = nodes => {
    
-    console.log('passed in data', nodes);
+    console.log('passed in data', nodes.childNodes);
     var rawData = getRawData(nodes);
 
     return build(rawData);
