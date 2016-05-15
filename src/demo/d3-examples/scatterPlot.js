@@ -175,7 +175,7 @@ data.dataSet = [
 	{ y_value : 6.3, x_value : 2.5, type : 'type 9' },
 	{ y_value : 6.5, x_value : 3.0, type : 'type 9' },
 	{ y_value : 6.2, x_value : 3.4, type : 'type 9' },
-	{ y_value : 5.9, x_value : 3.0, type : 'type 9' }
+	{ y_value : 5.9, x_value : 3.0, type : 'type 8' }
 
 ]
 
