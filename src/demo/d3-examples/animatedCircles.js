@@ -118,7 +118,7 @@ var color = d3.scale.linear()
   .domain([0, 100])
   .range(["#F66A96", "#3E6E9C"]);
 
-var data = d3.range(5000).map(function(d) {
+var data = d3.range(25).map(function(d) {
   return {
     id: d,
     size: 1 + Math.floor(Math.random() * 5),
@@ -144,15 +144,14 @@ node.enter().append("circle")
   .attr("r", function(d) { return d.size; })
   .attr("fill", function(d) { return color(d.color); });
 
-function update(t) {
-  node.attr("transform", function(d) {
-    var alpha = TAU / d.f * (t % d.f);
-    return "translate(" + (d.x + Math.cos(alpha) * d.r) + "," + (d.y + Math.sin(alpha) * d.r) + ")";
-  });
-}
+// function update(t) {
+//   node.attr("transform", function(d) {
+//     var alpha = TAU / d.f * (t % d.f);
+//     return "translate(" + (d.x + Math.cos(alpha) * d.r) + "," + (d.y + Math.sin(alpha) * d.r) + ")";
+//   });
+// }
 
-d3.timer(update);
-
+// d3.timer(update);
 d3.select(self.frameElement).style("height", height + "px");
 
 

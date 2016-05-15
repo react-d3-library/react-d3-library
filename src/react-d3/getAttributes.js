@@ -21,6 +21,5 @@ module.exports = (attributesObject, node) => {
     attributes[key] = eventHandlers[key]
   }
 
-
   return attributes;
 }
