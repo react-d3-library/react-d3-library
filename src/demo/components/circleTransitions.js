@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
 const D3StateContainer = require('./d3Components/d3StateContainer');
-const circleD3 = require('./../d3-examples/animatedCircles');
+const node = require('./../d3-examples/animatedCircles');
 
 module.exports = React.createClass({
 
@@ -10,15 +10,15 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    this.setState({d3: circleD3});
+    this.setState({d3: node});
   },
-
 
   render: function() {
     return (
-      <div className="react-d3">
+      <div>
         <D3StateContainer data={this.state.d3} />
       </div>
     )
   }
 });
+

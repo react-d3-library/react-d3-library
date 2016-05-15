@@ -6,17 +6,34 @@ const D3ChildContainer = require('./d3ChildContainer')
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {data: []}
+    return {d3: [], data: [], called: false}
   },
 
   componentWillReceiveProps: function(nextProps) {
-    let data = d3DataToJSX(nextProps.data);
-    console.log(data);
-    // this.setState({d3: d3DataToJSX(nextProps.data)})
+    if(!this.state.called) {
+      let d3Data = d3DataToJSX(nextProps.data);
+      this.setState({d3: d3Data.mappedData, data: d3Data.state, called: true})
+    }
+  },
+
+  update: function() {
+    var circleNum = this.state.data['circle.0.0.1']
+    var newData = 2 * circleNum;
+    var data = this.state.data;
+
+    data['circle.0.0.1'] = newData;
+
+    this.setState({data})
   },
 
   render: function() {
-    return <D3ChildContainer data={this.state.d3} />
+    console.log(this.state.data);
+    return (
+      <div>
+        <button onClick={this.update}>Click</button>
+        <D3ChildContainer data={this.state} />
+      </div>
+    )
   }
 });
 

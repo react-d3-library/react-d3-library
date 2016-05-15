@@ -43,5 +43,4 @@ node.append("text")
 
 
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
-console.log('div', div);
 module.exports = div

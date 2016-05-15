@@ -128,7 +128,9 @@ var data = d3.range(25).map(function(d) {
   };
 });
 
-var svg = d3.select(root).append("svg")
+var div = document.createElement('div');
+
+var svg = d3.select(div).append("svg")
   .attr({
     width: width,
     height: height
@@ -154,5 +156,4 @@ node.enter().append("circle")
 // d3.timer(update);
 d3.select(self.frameElement).style("height", height + "px");
 
-
-module.exports = node;
+module.exports = div;
