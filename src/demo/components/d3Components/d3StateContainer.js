@@ -11,7 +11,7 @@ module.exports = React.createClass({
 
   componentWillReceiveProps: function(nextProps) {
       let d3Data = d3DataToJSX(nextProps.data);
-
+      console.log(nextProps)
       this.setState({d3: d3Data.mappedData, data: d3Data.state})
   },
 
