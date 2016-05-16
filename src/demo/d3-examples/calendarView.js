@@ -48,7 +48,7 @@ svg.selectAll(".month")
 
 d3.csv("dji.csv", function(error, csv) {
   if (error) throw error;
-  console.log(csv)
+
   var data = d3.nest()
     .key(function(d) { return d.Date; })
     .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })

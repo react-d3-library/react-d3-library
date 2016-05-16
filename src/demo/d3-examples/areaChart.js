@@ -1,61 +1,55 @@
-var d3 = require('d3');
-var div = document.createElement('div');
+const createAreaChart = require('./../basic-graphs/createAreaChart');
 
+// Build data for a class pie chart
+var data = {};
 
-// var data = {};
+// Define the width and height of the chart
+data.width = 960;
+data.height = 500;
 
-var data = [
-    { x: 0, y: 10, },
-    { x: 1, y: 15, },
-    { x: 2, y: 35, },
-    { x: 3, y: 20, },
-];
+// Display names to run along x and y axis
+data.x_display_name = 'X VALUE';
+data.y_display_name = 'Y VALUE';
 
-var margin = {top: 20, right: 20, bottom: 40, left: 50},
-    width = 575 - margin.left - margin.right,
-    height = 350 - margin.top - margin.bottom;
+// CSS class names for styling
+data.area_class = 'area';
+data.axisLine_class = 'axisLine';
 
-var x = d3.scale.linear()
-    .domain([0, d3.max(data, function(d) { return d.x; })])
-    .range([0, width]);
+/* 
 
-var y = d3.scale.linear()
-    .domain([0, d3.max(data, function(d) { return d.y; })])
-    .range([height, 0]);
+Example Styling:
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+.axisLine path,
+.axisLine line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+.area {
+  fill: forestgreen;
+}
 
-var area = d3.svg.area()
-    .x(function(d) { return x(d.x); })
-    .y0(height)
-    .y1(function(d) { return y(d.y); });
+*/
 
+// Create collection of x and y data, x values must be sorted
+data.dataSet = [
 
-var svg = d3.select(div)
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	{xValue : 1, yValue: 40},
+	{xValue : 2, yValue: 63},
+	{xValue : 3, yValue: 52},
+	{xValue : 4, yValue: 59},
+	{xValue : 5, yValue: 79},
+	{xValue : 6, yValue: 76},
+	{xValue : 7, yValue: 68},
+	{xValue : 8, yValue: 86},
+	{xValue : 9, yValue: 94},
+	{xValue : 10, yValue: 100},
+	{xValue : 11, yValue: 92},
+	{xValue : 12, yValue: 111},
+	{xValue : 13, yValue: 97},
+	{xValue : 14, yValue: 120}
 
-svg.append("path")
-    .datum(data)
-    .attr("class", "area")
-    .attr("d", area);
+] 
 
-svg.append("g")
-    .attr("class", "x axisLine")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-svg.append("g")
-    .attr("class", "y axisLine")
-    .call(yAxis);
-
-
-module.exports = div
+module.exports = createAreaChart(data);

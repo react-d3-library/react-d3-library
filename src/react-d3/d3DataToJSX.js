@@ -10,7 +10,7 @@ var counter = -1;
 const getRawData = node => {
 
   var output = [];
-  console.log(node.childNodes);
+  // console.log(node.childNodes);
   for(var key in node.childNodes) {
 
     if(!isNaN(key) && node.childNodes[key]) output.push(node.childNodes[key]);
@@ -86,7 +86,7 @@ const makeChildNodes = reactData => {
 //Build raw data and then build the react DOM
 module.exports = nodes => {
 
-    console.log('passed in data', nodes);
+    // console.log('passed in data', nodes);
     var rawData = getRawData(nodes);
 
     return build(rawData);
