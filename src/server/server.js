@@ -33,4 +33,8 @@ app.get('/data.tsv', function(req,res){
   res.sendFile(path.join(__dirname + './static/data.tsv'));
 })
 
+app.get('/dateClose.tsv', function(req,res){
+  res.sendFile(path.join(__dirname + './static/dateClose.tsv'));
+})
+
 app.listen(3000);
