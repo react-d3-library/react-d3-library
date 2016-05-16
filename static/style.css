@@ -193,3 +193,21 @@ body {
 .area {
   fill: forestgreen;
 }
+
+/* These are styles for lineChart */
+.lineChartAxis path,
+.lineChartAxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.lineChartX.axis path {
+  display: none;
+}
+
+.lineChart {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

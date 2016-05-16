@@ -4,7 +4,7 @@ function createPieChart (data) {
 
 	var div = document.createElement('div');
 
-    var radius = Math.min(data.width, data.height) / 2;
+  var radius = Math.min(data.width, data.height) / 2;
 
 	var color = d3.scale.ordinal()
 	    .range(data.colors);

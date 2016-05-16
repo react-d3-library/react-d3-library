@@ -25,6 +25,10 @@ app.get('/dji.csv', function(req,res){
   res.sendFile(path.join(__dirname + './static/dji.csv'));
 })
 
+app.get('/bar-data.csv', function(req,res){
+  res.sendFile(path.join(__dirname + './static/bar-data.csv'));
+})
+
 app.get('/data.tsv', function(req,res){
   res.sendFile(path.join(__dirname + './static/data.tsv'));
 })
