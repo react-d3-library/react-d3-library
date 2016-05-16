@@ -4,7 +4,7 @@ var createReactComponents = require('./../../../react-d3/createReactComponents')
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {data: [], t: 0, called: false}
+    return {data: [], t: 0}
   },
 
   componentWillReceiveProps: function(nextProps) {

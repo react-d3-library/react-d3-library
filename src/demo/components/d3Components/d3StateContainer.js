@@ -6,14 +6,13 @@ const D3ChildContainer = require('./d3ChildContainer')
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {d3: [], data: [], called: false}
+    return {d3: [], data: []}
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if(!this.state.called) {
       let d3Data = d3DataToJSX(nextProps.data);
-      this.setState({d3: d3Data.mappedData, data: d3Data.state, called: true})
-    }
+
+      this.setState({d3: d3Data.mappedData, data: d3Data.state})
   },
 
   update: function() {
@@ -21,13 +20,10 @@ module.exports = React.createClass({
     var newData = 2 * circleNum;
     var data = this.state.data;
 
-    data['circle.0.0.1'] = newData;
-
     this.setState({data})
   },
 
   render: function() {
-    console.log(this.state.data);
     return (
       <div>
         <button onClick={this.update}>Click</button>
