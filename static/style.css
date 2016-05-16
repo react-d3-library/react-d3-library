@@ -158,3 +158,56 @@ body {
 .RdYlGn .q9-11{fill:rgb(26,152,80)}
 .RdYlGn .q10-11{fill:rgb(0,104,55)}
 
+/* These are styles for pieChart */
+
+
+.arc text {
+  font: 14px sans-serif;
+  text-anchor: middle;
+}
+
+
+
+/* These are styles for scatterPlot */
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: #000;
+}
+
+/* These are styles for areaChart */
+
+.axisLine path,
+.axisLine line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: forestgreen;
+}
+
+/* These are styles for lineChart */
+.lineChartAxis path,
+.lineChartAxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.lineChartX.axis path {
+  display: none;
+}
+
+.lineChart {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

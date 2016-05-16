@@ -4,7 +4,7 @@ var createReactComponents = require('./../../../react-d3/createReactComponents')
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {data: [], t: 0}
+    return {data: []}
   },
 
   componentWillReceiveProps: function(nextProps) {
@@ -16,7 +16,6 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="react-component">
-        <h1>{this.props.data.data['circle.0.0.1']}</h1>
         {this.state.data || ''}
       </div>
     )

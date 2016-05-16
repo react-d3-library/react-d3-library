@@ -1,7 +1,6 @@
 import React from 'react';
-import d3DataToJSX from './../../react-d3/d3DataToJSX';
 import node from './../d3-examples/colorMesh';
-const D3StateContainer = require('./d3Components/d3StateContainer');
+import D3StateContainer from './d3Components/d3StateContainer';
 
 module.exports = React.createClass({
 

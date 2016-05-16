@@ -13,8 +13,6 @@ var color = d3.scale.quantize()
     .domain([-.05, .05])
     .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
-var div = document.createElement('div');
-
 var svg = d3.select(div).selectAll("svg")
     .data(d3.range(1990, 2011))
   .enter().append("svg")

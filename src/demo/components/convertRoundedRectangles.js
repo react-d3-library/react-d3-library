@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import node from './../d3-examples/circleEventHandler';
+import React from 'react';
+import node from './../d3-examples/roundedRectangles';
 import D3StateContainer from './d3Components/d3StateContainer';
 
 module.exports = React.createClass({

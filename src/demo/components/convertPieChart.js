@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import d3 from 'd3';
-const D3StateContainer = require('./d3Components/d3StateContainer');
-const node = require('./../d3-examples/animatedCircles');
+import React from 'react';
+import node from './../d3-examples/pieChart';
+import D3StateContainer from './d3Components/d3StateContainer';
 
 module.exports = React.createClass({
 
@@ -21,4 +20,3 @@ module.exports = React.createClass({
     )
   }
 });
-

@@ -15,18 +15,9 @@ module.exports = React.createClass({
       this.setState({d3: d3Data.mappedData, data: d3Data.state})
   },
 
-  update: function() {
-    var circleNum = this.state.data['circle.0.0.1']
-    var newData = 2 * circleNum;
-    var data = this.state.data;
-
-    this.setState({data})
-  },
-
   render: function() {
     return (
       <div>
-        <button onClick={this.update}>Click</button>
         <D3ChildContainer data={this.state} />
       </div>
     )
