@@ -6,17 +6,21 @@ const D3ChildContainer = require('./d3ChildContainer')
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {data: []}
+    return {d3: [], data: []}
   },
 
   componentWillReceiveProps: function(nextProps) {
-    let data = d3DataToJSX(nextProps.data);
-    console.log(data);
-    // this.setState({d3: d3DataToJSX(nextProps.data)})
+      let d3Data = d3DataToJSX(nextProps.data);
+
+      this.setState({d3: d3Data.mappedData, data: d3Data.state})
   },
 
   render: function() {
-    return <D3ChildContainer data={this.state.d3} />
+    return (
+      <div>
+        <D3ChildContainer data={this.state} />
+      </div>
+    )
   }
 });
 

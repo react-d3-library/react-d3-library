@@ -1,5 +1,5 @@
 import React from 'react';
-var d3DataToJSX = require('./../../../react-d3/d3DataToJSX');
+var createReactComponents = require('./../../../react-d3/createReactComponents');
 
 module.exports = React.createClass({
 
@@ -8,9 +8,10 @@ module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    this.setState({data: nextProps.data})
+      var props = nextProps.data;
+      var reactComponents = createReactComponents(props.d3, props.data)
+      this.setState({data: reactComponents})
   },
-
 
   render: function() {
     return (

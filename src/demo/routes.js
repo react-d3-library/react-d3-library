@@ -8,7 +8,6 @@ var BestCanidate = require('./components/convertBestCanidate');
 var ColorMesh = require('./components/convertColorMesh');
 var MergeSort = require('./components/convertMergeSort');
 var RoundedRectangles = require('./components/convertRoundedRectangles');
-var CircleTransitions = require('./components/circleTransitions');
 var CongressionalDistricts = require('./components/convertCongressionalDistricts');
 var CalendarView = require('./components/convertCalendarView');
 var BarChartComponent = require('./components/convertBarChart');
@@ -27,7 +26,6 @@ module.exports = (
       <Route path='bestCanidate' component={BestCanidate} />
       <Route path='mergeSort' component={MergeSort} />
       <Route path='roundedRectangles' component={RoundedRectangles} />
-      <Route path='circleTransitions' component={CircleTransitions} />
       <Route path='congressionalDistricts' component={CongressionalDistricts} />
       <Route path='calendarView' component={CalendarView} />
       <Route path='barChartComponent' component={BarChartComponent} />
