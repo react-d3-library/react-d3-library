@@ -1,0 +1,29 @@
+{
+  "name": "react-d3-library",
+  "version": "1.0.0",
+  "description": "D3 library for React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-d3-library/react-d3-library.git"
+  },
+  "keywords": [
+    "d3",
+    "react",
+    "data",
+    "visualization",
+    "library",
+    "graphs",
+    "charts",
+    "plots"
+  ],
+  "author": "Andrew Burke, Daniel Lee, David Loyst",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/react-d3-library/react-d3-library/issues"
+  },
+  "homepage": "https://github.com/react-d3-library/react-d3-library#readme"
+}
