@@ -27,6 +27,7 @@ module.exports = (
       <Route path='congressionalDistricts' component={CongressionalDistricts} />
       <Route path='calendarView' component={CalendarView} />
       <Route path='pieChart' component={PieChart} />
+      <Route path='scatterPlot' component={ScatterPlot} />
       <Route path='areaChart' component={AreaChart} />
     </Route>
   </Router>
