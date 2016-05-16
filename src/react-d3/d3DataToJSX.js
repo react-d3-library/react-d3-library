@@ -10,7 +10,7 @@ var counter = -1;
 const getRawData = node => {
 
   var output = [];
-  console.log(node.childNodes);
+
   for(var key in node.childNodes) {
 
     if(!isNaN(key) && node.childNodes[key]) output.push(node.childNodes[key]);
@@ -59,7 +59,7 @@ const extractData = nodes => {
     output.props.key = output.tag + '.' + counter + '.' + i;
 
     // Special case for text tags
-    if(output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
+    if(output.tag === 'text') {output.props.textContent = obj.childNodes[0].data;}
 
     return output;
   })
@@ -87,6 +87,6 @@ const makeChildNodes = reactData => {
 module.exports = nodes => {
 
     var rawData = getRawData(nodes);
-    console.log(build(rawData));
+
     return build(rawData);
 }

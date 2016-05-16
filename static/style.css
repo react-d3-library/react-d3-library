@@ -17,10 +17,6 @@ body {
   font-family: sans-serif;
 }
 
-body {
-  font-size: 10px;
-}
-
 .navbar {
   margin: 0 auto;
   font-size: 30px;
@@ -196,4 +192,22 @@ body {
 
 .area {
   fill: steelblue;
+}
+
+/* These are styles for lineChart */
+.lineChartAxis path,
+.lineChartAxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.lineChartX.axis path {
+  display: none;
+}
+
+.lineChart {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
 }
