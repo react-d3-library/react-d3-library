@@ -9,7 +9,7 @@ var svg = d3.select(div).append("svg")
   .attr("transform", "translate(0,0)");
 
 var node = svg.selectAll(".node")
-  .data([50, 100]);
+  .data([50]);
 node.enter().append("circle")
   .attr("class", "node")
   .attr("transform", function(d) { return "translate("+d*4+",200)"; })

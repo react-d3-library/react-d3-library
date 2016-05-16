@@ -1,6 +1,6 @@
 import React from 'react';
 import d3DataToJSX from './../../react-d3/d3DataToJSX';
-import node from './../d3-examples/bubbleChart';
+import div from './../d3-examples/bubbleChart';
 const D3StateContainer = require('./d3Components/d3StateContainer');
 
 module.exports = React.createClass({
@@ -10,7 +10,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    this.setState({d3: node});
+    this.setState({d3: div});
   },
 
   render: function() {
