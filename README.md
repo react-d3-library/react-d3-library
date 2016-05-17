@@ -4,7 +4,7 @@ A library that will allow developers the ability to reroute D3 output to Reactâ€
 **Caution:** This library is still in alpha state and APIs will change.
 
 ### Version
-[![npm version](https://badge.fury.io/js/react-d3.png)](https://www.npmjs.com/package/react-d3-library)
+[![npm version](https://badge.fury.io/js/react-d3-library.png)](https://www.npmjs.com/package/react-d3-library)
 
 ### Basic usage
 
