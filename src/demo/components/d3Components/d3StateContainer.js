@@ -18,6 +18,7 @@ module.exports = React.createClass({
     return (
       <div>
         <D3ChildContainer data={this.state} />
+        }
       </div>
     )
   }
