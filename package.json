@@ -1,6 +1,6 @@
 {
   "name": "react-d3-library",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "D3 library for React",
   "main": "dist/react-d3-library.js",
   "scripts": {
