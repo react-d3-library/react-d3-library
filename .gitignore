@@ -1,4 +1,3 @@
 node_modules/
 npm-debug.log
-static/js/bundle.js
 .DS_store
