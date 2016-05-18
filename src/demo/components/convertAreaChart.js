@@ -1,6 +1,6 @@
 import React from 'react';
 import node from './../d3-examples/areaChart';
-import D3StateContainer from './d3Components/d3StateContainer';
+import AreaChart from './d3Components/AreaChart';
 
 module.exports = React.createClass({
 
@@ -15,7 +15,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        <D3StateContainer data={this.state.d3} />
+        <AreaChart data={this.state.d3} />
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import node from './../d3-examples/lineChart';
+import LineChart from './d3Components/LineChart';
 import D3StateContainer from './d3Components/d3StateContainer';
-
 module.exports = React.createClass({
 
   getInitialState: function() {

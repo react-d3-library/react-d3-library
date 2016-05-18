@@ -31,15 +31,16 @@ function createLineChart(data) {
   var svg = d3.select(div).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
-    .append("g")
+      .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   
-  data.dataset.map(el => {
-    el.time = formatDate.parse(el.time);
-    el.value = +el.value;
-  });
-
-  data.tsvFileName !== ''
+  if (data.dataSet) {
+      data.dataset.map(el => {
+        el.time = formatDate.parse(el.time);
+        el.value = +el.value;
+      });
+  } 
+      data.tsvFileName !== ''
       ? d3.tsv(data.tsvFileName, lineChartParse, setLineChartData)
       : data.csvFileName !== ''
           ? d3.csv(data.csvFileName, lineChartParse, setLineChartData)
@@ -78,7 +79,7 @@ function createLineChart(data) {
         .attr("class", data.lineClass)
         .attr("d", line);
   }
-
+  
   return div;
 }
 

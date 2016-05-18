@@ -1,5 +1,3 @@
-const createBarChart = require('./../basic-graphs/createBarChart');
-
 // Build data for a classic bar chart
 var data = {}
 
@@ -49,4 +47,4 @@ data.barClass = 'bar';
 
 */
 
-module.exports = createBarChart(data);
+module.exports = data;

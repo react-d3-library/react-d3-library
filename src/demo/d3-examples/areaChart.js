@@ -1,5 +1,3 @@
-const createAreaChart = require('./../basic-graphs/createAreaChart');
-
 // Build data for a class pie chart
 var data = {};
 
@@ -50,4 +48,4 @@ data.dataSet = [
 
 ] 
 
-module.exports = createAreaChart(data);
+module.exports = data;
