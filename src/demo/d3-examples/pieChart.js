@@ -1,5 +1,3 @@
-const createPieChart = require('./../basic-graphs/createPieChart');
-
 // Build data for a classic pie chart
 var data = {}
 
@@ -38,4 +36,4 @@ data.arcClass = 'arc';
 
 */
 
-module.exports = createPieChart(data);
+module.exports = data;

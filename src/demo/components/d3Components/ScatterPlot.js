@@ -1,30 +1,33 @@
-var d3 = require('d3');
+import React from 'react';
+const d3DataToJSX = require('./../../../react-d3/d3DataToJSX');
+const D3ChildContainer = require('./d3ChildContainer');
+const d3 = require('d3');
 
 function createScatterPlot (data) {
 
-	var div = document.createElement('div');
+  var div = document.createElement('div');
 
-	var width = data.width - data.margin.left - data.margin.right;
-	var height = data.height - data.margin.top - data.margin.bottom;
+  var width = data.width - data.margin.left - data.margin.right;
+  var height = data.height - data.margin.top - data.margin.bottom;
 
-	var x = d3.scale.linear().range([0, width]);
-	var y = d3.scale.linear().range([height, 0]);
+  var x = d3.scale.linear().range([0, width]);
+  var y = d3.scale.linear().range([height, 0]);
 
-	var color = d3.scale.category10();
+  var color = d3.scale.category10();
 
-	var xAxis = d3.svg.axis()
-	    .scale(x)
-	    .orient("bottom");
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
 
-	var yAxis = d3.svg.axis()
-	    .scale(y)
-	    .orient("left");
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
 
-	var svg = d3.select(div).append("svg")
-	    .attr("width", width + data.margin.left + data.margin.right)
-	    .attr("height", height + data.margin.top + data.margin.bottom)
-	    .append("g")
-	    .attr("transform", "translate(" + data.margin.left + "," + data.margin.top + ")");
+  var svg = d3.select(div).append("svg")
+      .attr("width", width + data.margin.left + data.margin.right)
+      .attr("height", height + data.margin.top + data.margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + data.margin.left + "," + data.margin.top + ")");
 
     data.dataSet.forEach(function(d) {
         d.y_value = +d.y_value;
@@ -87,4 +90,22 @@ function createScatterPlot (data) {
     return div;    
 }
 
-module.exports = createScatterPlot;	
+module.exports = React.createClass({
+
+  getInitialState: function() {
+    return {d3: [], data: []}
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+      let d3Data = d3DataToJSX(createScatterPlot(nextProps.data));
+      this.setState({d3: d3Data.mappedData, data: d3Data.state})
+  },
+
+  render: function() {
+    return (
+      <div>
+        <D3ChildContainer data={this.state} />
+      </div>
+    )
+  }
+});

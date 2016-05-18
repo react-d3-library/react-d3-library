@@ -1,5 +1,3 @@
-const createScatterPlot = require('./../basic-graphs/createScatterPlot');
-
 //Build data to pass to createScatterPlot;
 var data = {}
 
@@ -172,4 +170,4 @@ data.dataSet = [
 
 ]
 
-module.exports = createScatterPlot(data);
+module.exports = data;

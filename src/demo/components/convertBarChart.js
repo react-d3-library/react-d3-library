@@ -1,6 +1,6 @@
 import React from 'react';
 import node from './../d3-examples/barChart';
-import D3StateContainer from './d3Components/d3StateContainer';
+import BarChart from './d3Components/BarChart';
 
 module.exports = React.createClass({
 
@@ -15,7 +15,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        <D3StateContainer data={this.state.d3} />
+        <BarChart data={this.state.d3} />
       </div>
     )
   }
