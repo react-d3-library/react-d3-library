@@ -2,9 +2,9 @@
   "name": "react-d3-library",
   "version": "1.0.4",
   "description": "D3 library for React",
-  "main": "dist/reactd3library.js",
+  "main": "dist/react-d3-library.js",
   "scripts": {
-    "prepublish": "browserify -s reactd3library -t [ babelify --presets [ es2015 ] ] ./lib/index.js > dist/reactd3library.js",
+    "prepublish": "browserify -s react-d3-library -t ./lib/index.js > dist/react-d3-library.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
