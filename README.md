@@ -113,7 +113,7 @@ Then pass the state as props to the react-d3-library Component `rd3.Component`.
 
 ```javascript
 import rd3 from 'react-d3-library';
-const Component = rd3.Component;
+const RD3Component = rd3.Component;
 
 var my_First_React_D3_Library_Component = React.createClass({
 
@@ -128,7 +128,7 @@ var my_First_React_D3_Library_Component = React.createClass({
   render: function() {
     return (
       <div>
-        <Component data={this.state.d3} />
+        <RD3Component data={this.state.d3} />
       </div>
     )
   }
