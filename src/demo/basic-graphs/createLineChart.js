@@ -79,7 +79,7 @@ function createLineChart(data) {
         .attr("class", data.lineClass)
         .attr("d", line);
   }
-  
+  console.log('inside function', div)
   return div;
 }
 

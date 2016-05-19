@@ -96,4 +96,4 @@ data.lineClass = 'lineChart';
 
 */
 
-module.exports = createLineChart(data);
+module.exports = data;
