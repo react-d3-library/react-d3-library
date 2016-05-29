@@ -10,7 +10,7 @@ A library that will allow developers the ability to reroute D3 output to Reactâ€
 
 First off, install with:
 
-`npm install [--save] react-d3-library`
+`npm install --save react-d3-library`
 
 Next, import into your React project:
 
