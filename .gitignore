@@ -1,3 +1,4 @@
 node_modules/
 npm-debug.log
 .DS_store
+dist/react-d3-library

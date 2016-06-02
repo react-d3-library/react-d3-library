@@ -1,7 +1,5 @@
 ## react-d3-library
-A library that will allow developers the ability to reroute D3 output to React’s virtual DOM. Just use your existing D3 code, and with a few simples lines, you can now harness the power of React with the flexibility of D3! React-D3-Library will compile your code into React components, and it also comes with a series of D3 template charts converted to React components for developers who are unfamiliar with D3. Not only do we build fully functional React components, but they utilize the power of D3 to automate scaling ranges, normalizing data, and constructing legends. Some examples are shown below, and others will be able to be viewed [here](http://someplace) with corresponding code examples.
-
-**Caution:** This library is still in alpha state and APIs will change.
+A library that will allow developers the ability to reroute D3 output to React’s virtual DOM. Just use your existing D3 code, and with a few simples lines, you can now harness the power of React with the flexibility of D3! React-D3-Library will compile your code into React components, and it also comes with a series of D3 template charts converted to React components for developers who are unfamiliar with D3. Not only do we build fully functional React components, but they utilize the power of D3 to automate scaling ranges, normalizing data, and constructing legends.
 
 ### Version
 [![npm version](https://badge.fury.io/js/react-d3-library.png)](https://www.npmjs.com/package/react-d3-library)
@@ -10,7 +8,7 @@ A library that will allow developers the ability to reroute D3 output to React�
 
 First off, install with:
 
-`npm install [--save] react-d3-library`
+`npm install --save react-d3-library`
 
 Next, import into your React project:
 
@@ -113,7 +111,7 @@ Then pass the state as props to the react-d3-library Component `rd3.Component`.
 
 ```javascript
 import rd3 from 'react-d3-library';
-const Component = rd3.Component;
+const RD3Component = rd3.Component;
 
 var my_First_React_D3_Library_Component = React.createClass({
 
@@ -128,7 +126,7 @@ var my_First_React_D3_Library_Component = React.createClass({
   render: function() {
     return (
       <div>
-        <Component data={this.state.d3} />
+        <RD3Component data={this.state.d3} />
       </div>
     )
   }
@@ -151,5 +149,7 @@ var BarChart = rd3.createBarChart;
 
 ### License
 MIT
+
+Because this is an open source project, we are constantly evaluating feedback and continuing to improve upon the content.
 
 Copyright (c) 2016 Andrew Burke, Danny Lee, Dave Loyst [contributors](https://github.com/orgs/react-d3-library/people)
