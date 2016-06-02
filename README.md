@@ -60,13 +60,13 @@ converting it to a React component,
 
 `var node = document.createElement('div');`
 
-and this **`div`** is what we will have D3 select.
+and this **`node`** is what we will have D3 select.
 
 We change the selection from 
 ```javascript
 d3.select('body')
 ```
-to our new **`div`** variable.
+to our new **`node`** variable.
 ```javascript
 d3.select(node)
 ```
@@ -149,9 +149,8 @@ const AreaChart = rd3.AreaChart;
 const BarChart = rd3.BarChart;
 ```
 
-Check out the Wiki to see more about using our template components.
+Check out the Wiki to see more about using our [template](https://github.com/react-d3-library/react-d3-library/wiki) components.
 
-##[Template Documentation](https://github.com/react-d3-library/react-d3-library/wiki)
 
 ### License
 MIT
