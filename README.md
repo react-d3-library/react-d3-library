@@ -149,7 +149,7 @@ const AreaChart = rd3.AreaChart;
 const BarChart = rd3.BarChart;
 ```
 
-Check out the Wiki to see more about using our [template](https://github.com/react-d3-library/react-d3-library/wiki) components.
+Check out the Wiki to see more about using our [template](https://github.com/react-d3-library/react-d3-library/wiki/Templates) components.
 
 
 ### License
