@@ -58,23 +58,23 @@ var node = svg.selectAll(".node")
 We need to create a `div` element for D3 to build upon before
 converting it to a React component,
 
-`var div = document.createElement('div');`
+`var node = document.createElement('div');`
 
-and this **`div`** is what we will have D3 select.
+and this **`node`** is what we will have D3 select.
 
 We change the selection from 
 ```javascript
 d3.select('body')
 ```
-to our new **`div`** variable.
+to our new **`node`** variable.
 ```javascript
-d3.select(div)
+d3.select(node)
 ```
 
 This is what the new code should look like:
 
 ```javascript
-var div = document.createElement('div');
+var node = document.createElement('div');
 
 var diameter = 960,
     format = d3.format(",d"),
@@ -85,7 +85,7 @@ var bubble = d3.layout.pack()
     .size([diameter, diameter])
     .padding(1.5);
     
-var svg = d3.select(div).append("svg")
+var svg = d3.select(node).append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .attr("class", "bubble");
@@ -105,47 +105,52 @@ var node = svg.selectAll(".node")
 
 Just one more step and you are ready to convert everything to React!
 
-Use the `componentDidMount()` React lifecycle method to make the state aware of your new D3 **`div`**. 
+Use the `componentDidMount()` React lifecycle method to make the state aware of your new D3 **`node`**. 
 
 Then pass the state as props to the react-d3-library Component `rd3.Component`.
 
 ```javascript
 import rd3 from 'react-d3-library';
+import node from 'd3file';
 const RD3Component = rd3.Component;
 
-var my_First_React_D3_Library_Component = React.createClass({
+class my_First_React_D3_Library_Component extends React.Component {
 
-  getInitialState: function() {
-    return {d3: ''}
-  },
+  constructor(props) {
+    super(props);
+    this.state = {d3: ''}
+  }
 
-  componentDidMount: function() {
-    this.setState({d3: div});
-  },
+  componentDidMount() {
+    this.setState({d3: node});
+  }
 
-  render: function() {
+  render() {
     return (
       <div>
         <RD3Component data={this.state.d3} />
       </div>
     )
   }
-});
+};
 ```
 And that's it!! Good Job!!
 
 
-Simple chart templates are also available under the `rd3` namespace as shown below
+Simple chart components are also available under the `rd3` namespace as shown below
 
 ### Available Charts
 
 ```
-var ScatterPlot = rd3.createScatterPlot;
-var PieChart = rd3.createPieChart;
-var LineChart = rd3.createLineChart;
-var AreaChart = rd3.createAreaChart;
-var BarChart = rd3.createBarChart;
+const ScatterPlot = rd3.ScatterPlot;
+const PieChart = rd3.PieChart;
+const LineChart = rd3.LineChart;
+const AreaChart = rd3.AreaChart;
+const BarChart = rd3.BarChart;
 ```
+
+Check out the Wiki to see more about using our [template](https://github.com/react-d3-library/react-d3-library/wiki/Templates) components.
+
 
 ### License
 MIT
