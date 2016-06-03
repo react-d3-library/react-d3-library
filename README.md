@@ -22,6 +22,23 @@ or
 import rd3 from 'react-d3-library'
 ```
 
+If you are using D3 Code that only produces static content, or any functionality you have is embedded in event listeners, check out these two links for instructions:
+
+[D3 Code](https://github.com/react-d3-library/react-d3-library/wiki/D3-Code)
+[React Code](https://github.com/react-d3-library/react-d3-library/wiki/React-Code)
+
+If you do have functionality that should trigger on load(transitions, animations, timers) and/or you are using canvas tags you also need to follow these instructions:
+
+[Functionality](https://github.com/react-d3-library/react-d3-library/wiki/Functionality)
+
+If you are using D3 timers and want to be sure to prevent memory leaks take a look at this:
+
+[Timers](https://github.com/react-d3-library/react-d3-library/wiki/Timers)
+
+If you just want some easy to use graphs and charts without writing your own D3 code, checkout our template libaray:
+
+[Templates](https://github.com/react-d3-library/react-d3-library/wiki/Templates)
+
 ### Use With Existing D3 Code
 
 Developers can now take their existing D3 code and use React-D3-Library to create React components.
