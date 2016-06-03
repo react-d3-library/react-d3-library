@@ -21,6 +21,7 @@ or
 ```javascript
 import rd3 from 'react-d3-library'
 ```
+### Wiki
 
 If you are using D3 Code that only produces static content, or any functionality you have is embedded in event listeners, check out these two links for instructions:
 
