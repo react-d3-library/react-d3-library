@@ -151,6 +151,7 @@ const BarChart = rd3.BarChart;
 
 Check out the Wiki to see more about using our [template](https://github.com/react-d3-library/react-d3-library/wiki/Templates) components.
 
+We are also currently working on an examples webpage made fully in React that will give developers a chance to see the library in action! Our goal is to have the page up and running by Monday, June 6th, 2016 so check back often!
 
 ### License
 MIT
