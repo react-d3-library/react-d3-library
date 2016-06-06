@@ -1,6 +1,8 @@
 ## react-d3-library
 A library that will allow developers the ability to reroute D3 output to React’s virtual DOM. Just use your existing D3 code, and with a few simples lines, you can now harness the power of React with the flexibility of D3! React-D3-Library will compile your code into React components, and it also comes with a series of D3 template charts converted to React components for developers who are unfamiliar with D3. Not only do we build fully functional React components, but they utilize the power of D3 to automate scaling ranges, normalizing data, and constructing legends.
 
+![Voronoi](http://i.imgur.com/zwSsPTS.gif) 
+
 ### Version
 [![npm version](https://badge.fury.io/js/react-d3-library.png)](https://www.npmjs.com/package/react-d3-library)
 
@@ -26,6 +28,8 @@ import rd3 from 'react-d3-library'
 
 Developers can now take their existing D3 code and use React-D3-Library to create React components.
 Below is an excerpt of using D3 to create a Bubble Chart with Mike Bostock's D3 code found [here](https://bl.ocks.org/mbostock/4063269).
+
+![BubbleChart](http://i.imgur.com/iBumKRW.png)
 
 ```javascript
 var diameter = 960,
