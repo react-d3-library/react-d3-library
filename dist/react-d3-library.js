@@ -3846,7 +3846,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (output.props.style) output.props.style = (0, _getStyles2.default)(output.props.style);
 
 	    // Special case for text tags
-	    if (output.tag === 'text') output.props.textContent = obj.childNodes[0].data;
+	    if (output.tag === 'text') output.props.textContent = obj.childNodes.length ? obj.childNodes[0].data : '';
 
 	    // output.props['react-d3-id'] = output.tag + '.' + counter + '.' + i;\
 	    if (!obj['data-react-d3-id']) {
