@@ -173,7 +173,7 @@ const BarChart = rd3.BarChart;
 
 Check out the Wiki to see more about using our [template](https://github.com/react-d3-library/react-d3-library/wiki/Templates) components.
 
-**Due to the recent large flux of emails we have been getting, please note we do plan on releasing more highly available template charts along with accessible D3 and unit tests for open source contributors to help.  
+**Due to the recent large influx of emails we have been getting, please note we do plan on releasing more highly available template charts along with accessible D3 and unit tests for open source contributors to help.  
 
 ### License
 MIT
