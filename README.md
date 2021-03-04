@@ -1,4 +1,6 @@
-\*Please note this repo is no longer maintained
+- Moved d3 to a peer dependency, now you can use the latest version of react with this library
+- Updated webpack config to consider d3 as external so it does not get bundled with the script
+- Added a "build" task
 
 ## react-d3-library
 
