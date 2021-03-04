@@ -1,23 +1,26 @@
-var webpack = require('webpack');
+var webpack = require("webpack");
 
 module.exports = {
-  entry:  __dirname + '/lib/index.js',
+  entry: __dirname + "/lib/index.js",
   output: {
-    filename:  __dirname + '/dist/react-d3-library.js',
-    library: 'react-d3-library',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    filename: __dirname + "/dist/react-d3-library.js",
+    library: "react-d3-library",
+    libraryTarget: "umd",
+    umdNamedDefine: true,
+  },
+  externals: {
+    d3: "d3",
   },
   module: {
     loaders: [
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: "babel",
         query: {
-          presets: ['react']
-        }
-      }
-    ]
-  }
+          presets: ["react"],
+        },
+      },
+    ],
+  },
 };
