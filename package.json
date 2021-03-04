@@ -1,6 +1,6 @@
 {
   "name": "@koga73/react-d3-library",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "D3 library for React",
   "main": "dist/react-d3-library.js",
   "scripts": {
